@@ -47,7 +47,7 @@ production server.
 
 ## Contributors
 
-Ted ([@drenmi](https://github.com/Drenmi))
-Farrah ([@farrahfazirah](https://github.com/farrahfazirah))
-Maria ([@alahab2](https://github.com/alahab2))
-Xinyu ([@limxinyuuu](https://github.com/limxinyuuu))
+- Ted ([@drenmi](https://github.com/Drenmi))
+- Farrah ([@farrahfazirah](https://github.com/farrahfazirah))
+- Maria ([@alahab2](https://github.com/alahab2))
+- Xinyu ([@limxinyuuu](https://github.com/limxinyuuu))
