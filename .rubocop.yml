@@ -1,0 +1,71 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - db/**/*
+    - log/**/*
+    - public/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - .gems/**/*
+
+Rails:
+  Enabled: true
+
+Style/AccessorMethodName:
+  Enabled: false
+
+Style/AndOr:
+  Enabled: true
+
+Style/IndentationWidth:
+  Width: 2
+
+Style/NestedParenthesizedCalls:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyLinesAroundBlockBody:
+  Enabled: true
+
+Style/EmptyLinesAroundClassBody:
+  Enabled: true
+
+Style/EmptyLinesAroundModuleBody:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: true
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/HashSyntax:
+  Enabled: true
+
+Style/AlignHash:
+  EnforcedHashRocketStyle: key
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Metrics/CyclomaticComplexity:
+  Enabled: true
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 10
