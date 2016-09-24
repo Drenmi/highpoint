@@ -15,6 +15,12 @@ gem "jquery-rails"
 
 gem "turbolinks"
 
+group :test do
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+  gem "shoulda-matchers"
+end
+
 group :development, :test do
   gem "byebug"
 end
