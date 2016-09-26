@@ -1,3 +1,5 @@
+require "code_climate/test_reporter"
+
 CodeClimate::TestReporter.start
 
 RSpec.configure do |config|
