@@ -1,0 +1,20 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-default">
+      <tr>
+        <th>Name</th>
+        <th>NRIC/UEM</th>
+        <th>Total Donation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @donors.each do |donor| %>
+        <tr>
+          <td><%= donor.name %></td>
+          <td><%= donor.identification %></td>
+          <td>$<%= number_with_delimiter(donor.total_donations, delimiter: ",") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
