@@ -1,0 +1,5 @@
+language: ruby
+rvm:
+ - 2.3.1
+notifications:
+  slack: teamtechladies:ps1NAx9fspD4RJobMG9vg2NE
