@@ -4,6 +4,7 @@ RSpec.describe DonorsController, type: :controller do
   let(:donor) { instance_double(Donor) }
 
   before do
+    sign_in
     allow(subject).to receive(:find_donor) { donor }
   end
 
