@@ -1,5 +1,17 @@
 language: ruby
 rvm:
  - 2.3.1
+services:
+  - postgresql
+branches:
+  only:
+  - master
+  - develop
+bundler_args: "--without production --jobs=3"
+cache: bundler
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database-travis.yml config/database.yml
+  - bundle exec rake db:schema:load RAILS_ENV=test
 notifications:
   slack: teamtechladies:ps1NAx9fspD4RJobMG9vg2NE

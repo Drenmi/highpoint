@@ -11,9 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160926083857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "causes", force: :cascade do |t|
+    t.string   "shortcode",  null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.integer  "donor_id"
+    t.integer  "cause_id"
+    t.decimal  "amount",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "donations", ["cause_id"], name: "index_donations_on_cause_id", using: :btree
+  add_index "donations", ["donor_id"], name: "index_donations_on_donor_id", using: :btree
+
+  create_table "donors", force: :cascade do |t|
+    t.string   "identification", null: false
+    t.string   "name"
+    t.text     "address"
+    t.string   "phone_number"
+    t.string   "email_address"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_foreign_key "donations", "causes"
+  add_foreign_key "donations", "donors"
 end

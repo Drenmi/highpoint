@@ -7,7 +7,8 @@ gem "rails", "~> 4.2.7.1"
 gem "pg", "~> 0.15"
 
 gem "sass-rails", "~> 5.0"
-gem "bootstrap-sass"
+gem "bootstrap", "~> 4.0.0.alpha4"
+gem "font-awesome-rails"
 
 gem "uglifier", ">= 1.3.0"
 gem "coffee-rails", "~> 4.1.0"
@@ -19,6 +20,7 @@ group :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem "shoulda-matchers"
+  gem "codeclimate-test-reporter"
 end
 
 group :development, :test do
