@@ -5,5 +5,11 @@ FactoryGirl.define do
     trait :invalid do
       identification nil
     end
+
+    factory :donor_with_donations do
+      after(:create) do |donor, _|
+        create_list(:donation, 2, donor: donor)
+      end
+    end
   end
 end

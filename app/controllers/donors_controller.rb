@@ -4,6 +4,11 @@ class DonorsController < ApplicationController
     @donor = find_donor(params[:id])
   end
 
+  # GET /donors
+  def index
+    @donors = Donor.all
+  end
+
   private
 
   def find_donor(id)
