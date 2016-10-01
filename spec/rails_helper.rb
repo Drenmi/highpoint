@@ -6,6 +6,7 @@ require File.expand_path("../../config/environment", __FILE__)
 
 require "rspec/rails"
 require "shoulda/matchers"
+require "clearance/rspec"
 
 ActiveRecord::Migration.maintain_test_schema!
 
