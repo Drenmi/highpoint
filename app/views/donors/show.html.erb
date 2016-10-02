@@ -7,3 +7,31 @@
 <div id="show_partial">
   <%= render "show" %>
 </div>
+
+<div>
+  <h2>Total Amount Donated</h2>
+  <h1>$<%= number_with_delimiter(@donor.total_donations, delimiter: ",") %></h1>
+  <h5>Donor since <%= @donor.created_at.strftime("%d %b %Y") %> (<%= time_ago_in_words(@donor.created_at) %>)</h5>
+</div>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-default">
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Cause</th>
+        <th>Event</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @donor.donations.each do |donation| %>
+      <tr>
+        <td><%= donation.created_at.to_formatted_s(:short) %> (<%= donation.created_at.strftime("%Y") %>)</td>
+        <td>$<%= donation.amount.to_i %></td>
+        <td><%= donation.cause.name %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
