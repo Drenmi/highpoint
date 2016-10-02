@@ -7,10 +7,10 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-
-    <%= render "donations/new" %>
-
-    <%= render "layouts/navbar" %>
+      <br><% if signed_in? %></br>
+      <%= render "donations/new" %>
+      <%= render "layouts/navbar" %>
+    <% end %>
 
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>">
