@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def index
-  	current_user.application
+    current_user.application
   end
 end
