@@ -1,9 +1,32 @@
 <%= render "events/new" %>
 <div class="row">
-  <div class="col-xs-12 col-sm-4 offset-sm-8 eventsButton">
+  <div class="col-xs-12 col-sm-4">
+    <h1>Events</h1>
+  </div>
+  <div class="col-xs-12 col-sm-4 offset-sm-4 eventsButton">
 	<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#eventModal">
 	  <i class="fa fa-plus" aria-hidden="true"></i>
 	  Add New Event
 	</button>
   </div>
+</div>
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-default">
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Total Donations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= event.name %></td>
+          <td><%= l event.start_on, format: :short %> - <%= l event.end_on, format: :default %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
