@@ -10,7 +10,7 @@ RSpec.describe DonationsController, type: :controller do
 
   describe "POST #create" do
     before do
-      post :create, donation: FactoryGirl.attributes_for(:donation)
+      post :create, donation: attributes_for(:donation)
     end
 
     context "when donor is saved successfully" do
