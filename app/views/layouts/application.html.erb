@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-      <br><% if signed_in? %></br>
+      <% if signed_in? %>
       <%= render "donations/new" %>
       <%= render "layouts/navbar" %>
     <% end %>

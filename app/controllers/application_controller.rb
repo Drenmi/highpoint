@@ -10,7 +10,4 @@ class ApplicationController < ActionController::Base
     @modal_donation = Donation.new
   end
 
-  def index
-    current_user.application
-  end
 end

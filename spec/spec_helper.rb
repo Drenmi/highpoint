@@ -1,5 +1,4 @@
 require "code_climate/test_reporter"
-require "clearance/rspec"
 
 CodeClimate::TestReporter.start
 
