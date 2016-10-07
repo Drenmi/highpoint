@@ -1,10 +1,24 @@
 puts "Seeding Donations ..."
 
+donations = [
+  donor: Donor.first,
+  cause: Cause.first,
+  amount: 100,
+  event: Event.first
+],
+[
+  donor: Donor.first,
+  cause: Cause.first,
+  amount: 200,
+  event: Event.first
+],
+[
+  donor: Donor.first,
+  cause: Cause.first,
+  amount: 300,
+  event: Event.first
+]
+
 unless Donation.any?
-  Donation.create!(
-    donor: Donor.first,
-    cause: Cause.first,
-    event: Event.first,
-    amount: 100
-  )
+  Donation.create!(donations)
 end

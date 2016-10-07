@@ -7,7 +7,7 @@ FactoryGirl.define do
     end
 
     factory :donor_with_donations do
-      after(:create) do |donor, _|
+      after(:create) do |donor|
         create_list(:donation, 2, donor: donor)
       end
     end

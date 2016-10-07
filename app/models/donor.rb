@@ -4,6 +4,6 @@ class Donor < ActiveRecord::Base
   validates :identification, presence: true
 
   def total_donations
-    donations.sum(:amount).truncate
+    donations.sum(:amount).round
   end
 end

@@ -42,9 +42,9 @@
         </tr>
         <% @events.each do |event| %>
           <tr>
-            <td><%= event.name %></td>
+            <td><%= link_to event.name, event_path(event) %></td>
             <td><%= l event.start_on, format: :short %> - <%= l event.end_on, format: :default %></td>
-            <td></td>
+            <td>$<%= number_with_delimiter(event.total_donations, delimiter: ",") %></td>
           </tr>
         <% end %>
       </tbody>
