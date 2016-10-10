@@ -6,21 +6,18 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
-      <% if signed_in? %>
+<body>
+    <% if signed_in? -%>
       <%= render "donations/new" %>
       <%= render "layouts/navbar" %>
     <% end %>
 
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>">
-        <%= value %>
-      </div>
+  <div id="flash">
+    <% flash.each do |key, value| -%>
+      <div id="flash_<%= key %>"><%=h value %></div>
     <% end %>
+  </div>
 
-    <div class="container">
-      <%= yield %>
-    </div>
-
-  </body>
+  <%= yield %>
+</body>
 </html>

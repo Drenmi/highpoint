@@ -12,7 +12,12 @@
           <i class="fa fa-plus" aria-hidden="true"></i>
           New donation
         </button>
-      </li>
+  <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Sarah Lin <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
     </ul>
   </div>
 </nav>
