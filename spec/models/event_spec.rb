@@ -19,4 +19,10 @@ RSpec.describe Event, type: :model do
 
     it { expect(event.total_donations).to eq(200) }
   end
+
+  describe "#start_before_end" do
+    let(:event) { build(:event, name: "Test dates input", start_on: 1.year.ago + 1.day, end_on: 1.year.ago) }
+
+    it { expect(event).to_not be_valid }
+  end
 end
