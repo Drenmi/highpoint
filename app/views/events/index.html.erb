@@ -11,22 +11,43 @@
   </div>
 </div>
 <div class="table-responsive">
-  <table class="table">
-    <thead class="thead-default">
-      <tr>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Total Donations</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @events.each do |event| %>
+  <%= form_tag events_path, method: :get do %>
+    <table class="table">
+      <thead >
         <tr>
-          <td><%= event.name %></td>
-          <td><%= l event.start_on, format: :short %> - <%= l event.end_on, format: :default %></td>
-          <td></td>
+          <td colspan="3">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-4 offset-sm-6 offset-md-8">
+                <div class="input-group">
+                      <%= text_field_tag :search, params[:search], placeholder: "Type here...", class: "form-control" %>
+                      <span class="input-group-btn">
+                        <%= submit_tag "Search", name: :nil, class: "btn btn-secondary" %>
+                      </span>
+                </div>
+              </div>
+            </div>
+          </td>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <tr class="thead-default">
+          <th>Name</th>
+          <th>Date</th>
+          <th>Total Donations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% if @events.blank? %>
+            <h4>There are no events containing the term <%= params[:search] %>.</h4>
+          <% end %>
+        </tr>
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= event.name %></td>
+            <td><%= l event.start_on, format: :short %> - <%= l event.end_on, format: :default %></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>

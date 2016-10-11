@@ -2,7 +2,11 @@ class EventsController < ApplicationController
   before_action :prepare_modal_event
 
   def index
-    @events = Event.all
+    @events = if params[:search]
+                Event.search(params[:search])
+              else
+                Event.all
+              end
   end
 
   def create

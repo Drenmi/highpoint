@@ -13,7 +13,8 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
-  config.include(Shoulda::Matchers::ActiveModel, type: :form)
+  config.include Shoulda::Matchers::ActiveModel, type: :form
+  config.include FactoryGirl::Syntax::Methods
 end
 
 Shoulda::Matchers.configure do |config|
