@@ -18,10 +18,11 @@
   <table class="table">
     <thead class="thead-default">
       <tr>
-        <th>Date</th>
+        <th>Date Created</th>
         <th>Amount</th>
         <th>Cause</th>
         <th>Event</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -30,8 +31,17 @@
         <td><%= donation.created_at.to_formatted_s(:short) %> (<%= donation.created_at.strftime("%Y") %>)</td>
         <td>$<%= donation.amount.to_i %></td>
         <td><%= donation.cause.name %></td>
+        <td><% if donation.event %><%= donation.event.name %><% end %></td>
+        <td><%= link_to edit_donation_path, data: {toggle: "modal", target: "#donationeditModal"} do %>
+          <i class="fa fa-pencil fa-lg"></i>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
+</div>
+
+<div>
+  <%= render "donations/edit" %>
 </div>
