@@ -7,5 +7,11 @@ FactoryGirl.define do
     trait :invalid do
       name nil
     end
+
+    factory :event_with_donations do
+      after(:create) do |event|
+        create_list(:donation, 2, event: event)
+      end
+    end
   end
 end

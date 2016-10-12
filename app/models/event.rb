@@ -8,4 +8,8 @@ class Event < ActiveRecord::Base
   validates :name, presence: true
 
   scope :search, -> (keyword) { where("name ILIKE ?", "%#{keyword}%") }
+
+  def total_donations
+    donations.sum(:amount).round
+  end
 end

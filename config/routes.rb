@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :donations, only: [:create, :update, :edit]
-  resources :donors, only: [:show, :index, :update, :edit]
-  resources :events, only: [:index, :create]
+  resources :donors, only: [:index, :show, :update, :edit]
+  resources :events, only: [:create, :index, :show]
 end

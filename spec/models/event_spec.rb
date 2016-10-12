@@ -13,4 +13,10 @@ RSpec.describe Event, type: :model do
 
     it { expect(described_class.search("event")).to contain_exactly(match_beginning, match_middle, match_end) }
   end
+
+  describe "#total_donations" do
+    let(:event) { create(:event_with_donations) }
+
+    it { expect(event.total_donations).to eq(200) }
+  end
 end

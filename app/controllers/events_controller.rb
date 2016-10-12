@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
   before_action :prepare_modal_event
 
+  def show
+    @event = find_event(params[:id])
+  end
+
   def index
     @events = if params[:search]
                 Event.search(params[:search])
@@ -27,5 +31,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :start_on, :end_on)
+  end
+
+  def find_event(id)
+    Event.find(id)
   end
 end

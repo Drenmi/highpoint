@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe EventsController, type: :controller do
   before do
     sign_in
+    allow(subject).to receive(:find_event) { event }
   end
 
   describe "POST #create" do
@@ -46,6 +47,15 @@ RSpec.describe EventsController, type: :controller do
       let(:finder_method) { :search }
 
       it { expect(response).to have_http_status(:ok) }
+    end
+  end
+
+  describe "GET #show" do
+    let(:event) { instance_double(Event) }
+    before { get :show, id: 1 }
+
+    context "when event exists" do
+      it { expect(response).to have_http_status(:success) }
     end
   end
 end
