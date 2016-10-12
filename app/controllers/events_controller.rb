@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to events_path, notice: "Event was successfully created."
     else
-      redirect_to events_path, alert: "Failed to save event."
+      redirect_to events_path, alert: @event.errors.full_messages.to_sentence
     end
   end
 

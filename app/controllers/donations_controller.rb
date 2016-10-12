@@ -6,7 +6,7 @@ class DonationsController < ApplicationController
     if @donation.save
       redirect_to donations_path, notice: "Donation was successfully created."
     else
-      redirect_to donations_path, error: "Failed to save donation."
+      redirect_to donations_path, error: @event.errors.full_messages.to_sentence
     end
   end
 
