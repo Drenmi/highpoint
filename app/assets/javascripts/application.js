@@ -15,5 +15,18 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require tether
+//= require bootstrap-datepicker
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+$(document).ready(function(){
+  $('.datepicker').datepicker({
+    format: "dd/mm/yyyy",
+    weekStart: 1,
+    autoclose: true,
+    todayHighlight: true
+  });
+});
+
+

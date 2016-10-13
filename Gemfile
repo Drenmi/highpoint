@@ -10,6 +10,7 @@ gem "sass-rails", "~> 5.0"
 gem "rails-assets-tether", "~> 1.1.0"
 gem "bootstrap", "~> 4.0.0.alpha4"
 gem "font-awesome-rails"
+gem "bootstrap-datepicker-rails"
 
 gem "clearance"
 

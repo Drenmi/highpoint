@@ -46,6 +46,8 @@ GEM
     bootstrap (4.0.0.alpha4)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
+    bootstrap-datepicker-rails (1.6.4.1)
+      railties (>= 3.0)
     builder (3.2.2)
     byebug (9.0.5)
     clearance (1.15.0)
@@ -203,6 +205,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap (~> 4.0.0.alpha4)
+  bootstrap-datepicker-rails
   byebug
   clearance
   codeclimate-test-reporter
