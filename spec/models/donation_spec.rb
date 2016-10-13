@@ -7,4 +7,18 @@ RSpec.describe Donation, type: :model do
   it { is_expected.to validate_presence_of(:donor) }
   it { is_expected.to validate_presence_of(:amount) }
   it { is_expected.to validate_numericality_of(:amount).is_greater_than(0) }
+
+  describe ".search" do
+    let(:smithie_black) { create(:donor, name: "Smithie Black", identification: "G1234567M") }
+    let(:bob_smith_white) { create(:donor, name: "Bob Smith-White", identification: "G1234567M") }
+    let(:john_smith) { create(:donor, name: "John Smith", identification: "G1234567M") }
+    let(:carl_grey) { create(:donor, name: "Carl Grey", identification: "G1234567M") }
+
+    let(:match_beginning) { create(:donation, amount: 100, donor: smithie_black) }
+    let(:match_middle) { create(:donation, amount: 100, donor: bob_smith_white) }
+    let(:match_end) { create(:donation, amount: 100, donor: john_smith) }
+    let(:no_match) { create(:donation, amount: 100, donor: carl_grey) }
+
+    it { expect(described_class.search("smith")).to contain_exactly(match_beginning, match_middle, match_end) }
+  end
 end

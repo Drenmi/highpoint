@@ -1,25 +1,53 @@
+<%= link_to "< Back to Events' List", events_path %>
 <div class="row">
   <div class="col-xs-12 col-sm-8">
     <h1><%= @event.name %></h1>
   </div>
 </div>
+<div class="card card-inverse card-info text-xs-center">
+  <div class="card-block">
+    <h1>Total amount donated</h1>
+    <h1>$ <%= number_with_delimiter(@event.total_donations, delimiter: ",") %></h1>
+  </div>
+</div>
 <div class="table-responsive">
-  <table class="table">
-    <thead class="thead-default">
-      <tr>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Total Donations</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @event.donations.each do |donation| %>
+  <%= form_tag @event, method: :get do %>
+    <table class="table">
+      <thead class="thead-default">
         <tr>
-          <td><%= donation.donor.name %></td>
-          <td><%= l donation.created_at.to_date %></td>
-          <td>$<%= number_with_delimiter(donation.amount.round, delimiter: ",") %></td>
+          <td colspan="3">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-4 offset-sm-6 offset-md-8">
+                <div class="input-group">
+                      <%= text_field_tag :search, params[:search], placeholder: "Type here...", class: "form-control" %>
+                      <span class="input-group-btn">
+                        <%= submit_tag "Search", name: :nil, class: "btn btn-secondary" %>
+                      </span>
+                </div>
+              </div>
+            </div>
+          </td>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Total Donations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% if @donations.blank? %>
+            <h4>There is no Donation from a Donor named <%= params[:search] %>.</h4>
+          <% end %>
+        </tr>
+        <% @donations.each do |donation| %>
+          <tr>
+            <td><%= donation.donor.name %></td>
+            <td><%= l donation.created_at.to_date %></td>
+            <td>$<%= number_with_delimiter(donation.amount.round, delimiter: ",") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
