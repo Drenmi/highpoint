@@ -3,6 +3,11 @@ class EventsController < ApplicationController
 
   def show
     @event = find_event(params[:id])
+    @donations = if params[:search]
+                   Donation.search(params[:search])
+                 else
+                   Donation.all
+                 end
   end
 
   def index
