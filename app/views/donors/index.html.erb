@@ -1,20 +1,46 @@
+<div class="card card-inverse card-info text-xs-center">
+  <div class="card-block">
+    <h1>Total: <%= number_with_delimiter(@donors.count, delimiter: ",") %> Donors</h1>
+  </div>
+</div>
 <div class="table-responsive">
-  <table class="table">
-    <thead class="thead-default">
-      <tr>
-        <th>Name</th>
-        <th>NRIC/UEN</th>
-        <th>Total Donation</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @donors.each do |donor| %>
+  <%= form_tag donors_path, method: :get do %>
+    <table class="table">
+      <thead class="thead-default">
         <tr>
-          <td><%= donor.name %></td>
-          <td><%= donor.identification %></td>
-          <td>$<%= number_with_delimiter(donor.total_donations, delimiter: ",") %></td>
+          <td colspan="3">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-4 offset-sm-6 offset-md-8">
+                <div class="input-group">
+                      <%= text_field_tag :search, params[:search], placeholder: "Type here...", class: "form-control" %>
+                      <span class="input-group-btn">
+                        <%= submit_tag "Search", name: :nil, class: "btn btn-secondary" %>
+                      </span>
+                </div>
+              </div>
+            </div>
+          </td>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <tr>
+          <th>Name</th>
+          <th>NRIC/UEN</th>
+          <th>Total Donation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% if @donors.blank? && params[:search].present? %>
+            <h4>There are no donors with the name "<%= params[:search] %>".</h4>
+          <% end %>
+        </tr>
+        <% @donors.each do |donor| %>
+          <tr>
+            <td><%= donor.name %></td>
+            <td><%= donor.identification %></td>
+            <td>$<%= number_with_delimiter(donor.total_donations, delimiter: ",") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
