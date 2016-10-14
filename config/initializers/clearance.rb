@@ -1,4 +1,5 @@
 Clearance.configure do |config|
+  config.routes = false
   config.allow_sign_up = false
   config.cookie_domain = ".example.com"
   config.cookie_expiration = -> (_cookies) { 1.year.from_now.utc }
