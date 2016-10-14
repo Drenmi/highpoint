@@ -51,7 +51,9 @@ RSpec.describe EventsController, type: :controller do
   end
 
   describe "GET #show" do
-    let(:event) { instance_double(Event) }
+    let(:donation) { instance_double(Donation, amount: 100) }
+    let(:event) { instance_double(Event, donations: donation) }
+
     before { get :show, id: 1 }
 
     context "when event exists" do

@@ -36,8 +36,8 @@
       </thead>
       <tbody>
         <tr>
-          <% if @donations.blank? %>
-            <h4>There is no Donation from a Donor named <%= params[:search] %>.</h4>
+          <% if @donations.blank? && params[:search].present? %>
+            <h4>There is no Donation from a Donor named "<%= params[:search] %>".</h4>
           <% end %>
         </tr>
         <% @donations.each do |donation| %>
