@@ -6,7 +6,11 @@ class DonorsController < ApplicationController
 
   # GET /donors
   def index
-    @donors = Donor.all
+    @donors = if params[:search]
+                Donor.search(params[:search])
+              else
+                Donor.all
+              end
   end
 
   def update

@@ -3,6 +3,8 @@ class Donor < ActiveRecord::Base
 
   validates :identification, presence: true
 
+  scope :search, -> (keyword) { where("name ILIKE ?", "%#{keyword}%") }
+
   def total_donations
     donations.sum(:amount).round
   end
