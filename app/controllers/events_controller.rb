@@ -4,9 +4,9 @@ class EventsController < ApplicationController
   def show
     @event = find_event(params[:id])
     @donations = if params[:search]
-                   Donation.search(params[:search])
+                   @event.donations.search(params[:search])
                  else
-                   Donation.all
+                   @event.donations
                  end
   end
 
