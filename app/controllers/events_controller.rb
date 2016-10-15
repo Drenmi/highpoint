@@ -28,6 +28,22 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @event.update(event_params)
+      redirect_to @event, notice: "Event was successfully updated"
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to root_path
+  end
+
   private
 
   def prepare_modal_event
