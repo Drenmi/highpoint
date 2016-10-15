@@ -7,10 +7,13 @@
         </button>
 
         <%= form_for(@modal_donation) do |f| %>
+
+          <%= f.fields_for :donor, @modal_donation.donor do |donor| %>
             <div class="form-group">
-              <label for="donorDocs" class="form-control-label">Donor NRIC/UEN Number</label>
-              <input type="text" class="form-control" id="donorDocs">
+              <label for="donorDocs" class="form-control-label">Donor NRIC/UEN</label>
+              <%= donor.text_field :identification, class: "form-control" %>
             </div>
+          <% end %>
 
         <div class="form-group">
           <%= f.label :amount, class: "control-label" %>
@@ -18,8 +21,13 @@
         </div>
 
         <div class="form-group">
-          <label for="causeOrEvent" class="form-control-label">Cause or Event:</label>
-          <input type="text" class="form-control" id="causeOrEvent">
+          <label for="causeOrEvent" class="form-control-label">Cause</label>
+          <%= f.select :cause_id, options_for_select(Cause.pluck(:name, :id)), {}, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <label for="causeOrEvent" class="form-control-label">Event</label>
+          <%= f.select :event_id, options_for_select(Event.pluck(:name, :id)), {}, class:"form-control" %>
         </div>
 
         <div class="actions">

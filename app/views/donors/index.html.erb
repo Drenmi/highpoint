@@ -36,7 +36,7 @@
         <% @donors.each do |donor| %>
           <tr>
             <td><%= donor.name %></td>
-            <td><%= donor.identification %></td>
+            <td><%= link_to donor_path(donor) do %><%= donor.identification %><% end %></td>
             <td>$<%= number_with_delimiter(donor.total_donations, delimiter: ",") %></td>
           </tr>
         <% end %>
