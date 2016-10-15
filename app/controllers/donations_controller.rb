@@ -4,9 +4,9 @@ class DonationsController < ApplicationController
     @donation = Donation.new(donation_params)
 
     if @donation.save
-      redirect_to donations_path, notice: "Donation was successfully created."
+      redirect_to donor_path(@donation.donor), notice: "Donation was successfully created."
     else
-      redirect_to donations_path, error: @event.errors.full_messages.to_sentence
+      redirect_to :back, error: @donation.errors.full_messages.to_sentence
     end
   end
 
@@ -31,6 +31,6 @@ class DonationsController < ApplicationController
   end
 
   def donation_params
-    params.require(:donation).permit(:amount, :cause_id, :event_id)
+    params.require(:donation).permit(:amount, :cause_id, :event_id, donor_attributes: [:identification])
   end
 end

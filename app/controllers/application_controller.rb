@@ -9,5 +9,6 @@ class ApplicationController < ActionController::Base
 
   def prepare_modal_donation
     @modal_donation = Donation.new
+    @modal_donation.build_donor
   end
 end
