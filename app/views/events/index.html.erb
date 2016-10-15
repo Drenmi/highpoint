@@ -4,25 +4,27 @@
     <h1>Events</h1>
   </div>
   <div class="col-xs-12 col-sm-4 offset-sm-4 eventsButton">
-	<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#eventModal">
-	  <i class="fa fa-plus" aria-hidden="true"></i>
-	  Add New Event
-	</button>
+  	<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#eventModal">
+  	  <i class="fa fa-plus" aria-hidden="true"></i>
+  	  Add New Event
+  	</button>
   </div>
 </div>
 <div class="table-responsive">
   <%= form_tag events_path, method: :get do %>
     <table class="table">
-      <thead >
+      <thead>
         <tr>
           <td colspan="3">
-            <div class="row">
-              <div class="col-xs-12 col-sm-6 col-md-4 offset-sm-6 offset-md-8">
-                <div class="input-group">
-                      <%= text_field_tag :search, params[:search], placeholder: "Type here...", class: "form-control" %>
-                      <span class="input-group-btn">
-                        <%= submit_tag "Search", name: :nil, class: "btn btn-secondary" %>
-                      </span>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4 offset-sm-6 offset-md-8">
+                  <div class="input-group">
+                    <%= text_field_tag :search, params[:search], placeholder: "Search by event name ...", class: "form-control" %>
+                    <span class="input-group-btn">
+                      <%= submit_tag "Search", name: :nil, class: "btn btn-secondary" %>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -37,7 +39,7 @@
       <tbody>
         <tr>
           <% if @events.blank? %>
-            <h4>There are no events containing the term <%= params[:search] %>.</h4>
+            <h4>There are no events matching <em><%= params[:search] %></em>.</h4>
           <% end %>
         </tr>
         <% @events.each do |event| %>
