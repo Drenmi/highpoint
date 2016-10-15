@@ -33,7 +33,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to @event, notice: "Event was successfully updated"
+      redirect_to @events, notice: "Event was successfully updated."
     else
       render 'edit'
     end
