@@ -9,13 +9,15 @@
       <thead class="thead-default">
         <tr>
           <td colspan="3">
-            <div class="row">
-              <div class="col-xs-12 col-sm-6 col-md-4 offset-sm-6 offset-md-8">
-                <div class="input-group">
-                      <%= text_field_tag :search, params[:search], placeholder: "Type here...", class: "form-control" %>
-                      <span class="input-group-btn">
-                        <%= submit_tag "Search", name: :nil, class: "btn btn-secondary" %>
-                      </span>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4 offset-sm-6 offset-md-8">
+                  <div class="input-group">
+                    <%= text_field_tag :search, params[:search], placeholder: "Search by donor name ...", class: "form-control" %>
+                    <span class="input-group-btn">
+                      <%= submit_tag "Search", name: :nil, class: "btn btn-secondary" %>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -24,13 +26,13 @@
         <tr>
           <th>Name</th>
           <th>NRIC/UEN</th>
-          <th>Total Donation</th>
+          <th>Total Donations</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <% if @donors.blank? && params[:search].present? %>
-            <h4>There are no donors with the name "<%= params[:search] %>".</h4>
+            <h4>There are no donors matching <em><%= params[:search] %></em>.</h4>
           <% end %>
         </tr>
         <% @donors.each do |donor| %>
