@@ -1,7 +1,8 @@
 class DonationsController < ApplicationController
   # POST /donations
   def create
-    @donation = Donation.new(donation_params)
+    donor = find_or_build_donor(donation_params.delete(:donor))
+    @donation = Donation.new(donation_params.merge(donor: donor))
 
     if @donation.save
       redirect_to donor_path(@donation.donor), notice: "Donation was successfully created."
@@ -10,8 +11,10 @@ class DonationsController < ApplicationController
     end
   end
 
+  # PATCH /update
   def update
     @donation = find_donation(params[:id])
+
     if @donation.update(donation_params)
       redirect_to donor_path(@donation.donor), notice: "Donation was successfully updated."
     else
@@ -19,8 +22,10 @@ class DonationsController < ApplicationController
     end
   end
 
+  # GET /edit
   def edit
     @donation = find_donation(params[:id])
+
     render :edit
   end
 
@@ -30,7 +35,11 @@ class DonationsController < ApplicationController
     Donation.find(id)
   end
 
+  def find_or_build_donor(id)
+    Donor.find_or_initialize_by(id)
+  end
+
   def donation_params
-    params.require(:donation).permit(:amount, :cause_id, :event_id, donor_attributes: [:identification])
+    params.require(:donation).permit(:amount, :cause_id, :event_id, donor: [:identification])
   end
 end

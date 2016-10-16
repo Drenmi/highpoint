@@ -3,8 +3,6 @@ class Donation < ActiveRecord::Base
   belongs_to :cause, inverse_of: :donations
   belongs_to :event, inverse_of: :donations
 
-  accepts_nested_attributes_for :donor
-
   validates :donor, presence: true
   validates :amount, presence: true, numericality: { greater_than: 0 }
 
