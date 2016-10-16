@@ -7,7 +7,7 @@ donations = [
   event: Event.first
 ],
 [
-  donor: Donor.second,
+  donor: Donor.last,
   cause: Cause.first,
   amount: 200,
   event: Event.first

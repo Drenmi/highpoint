@@ -11,6 +11,9 @@ AllCops:
 Rails:
   Enabled: true
 
+Rails/HttpPositionalArguments:
+  Enabled: false
+
 Style/AccessorMethodName:
   Enabled: false
 
