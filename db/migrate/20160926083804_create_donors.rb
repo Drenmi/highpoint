@@ -10,5 +10,8 @@ class CreateDonors < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :donors, :identification, unique: true
+    add_index :donors, :name
   end
 end

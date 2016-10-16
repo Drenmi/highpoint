@@ -1,6 +1,10 @@
 FactoryGirl.define do
+  sequence :identification do |n|
+    "G123456#{n}M"
+  end
+
   factory :donor do
-    identification "G1234567M"
+    identification
 
     trait :invalid do
       identification nil

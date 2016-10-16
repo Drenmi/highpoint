@@ -46,6 +46,9 @@ ActiveRecord::Schema.define(version: 20160929164755) do
     t.datetime "updated_at",     null: false
   end
 
+  add_index "donors", ["identification"], name: "index_donors_on_identification", unique: true, using: :btree
+  add_index "donors", ["name"], name: "index_donors_on_name", using: :btree
+
   create_table "events", force: :cascade do |t|
     t.string   "name",       null: false
     t.date     "start_on",   null: false
