@@ -7,5 +7,9 @@ FactoryGirl.define do
     trait :invalid do
       amount nil
     end
+
+    factory :donation_with_cause do
+      cause
+    end
   end
 end

@@ -1,7 +1,11 @@
 FactoryGirl.define do
+  sequence :name do |n|
+    "Cause #{n}"
+  end
+
   factory :cause do
     shortcode "HH"
-    name "Halfway House"
+    name
 
     trait :invalid do
       name nil

@@ -5,44 +5,52 @@
 </div>
 <div class="table-responsive">
   <%= form_tag donors_path, method: :get do %>
-    <table class="table">
-      <thead class="thead-default">
-        <tr>
-          <td colspan="3">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4 offset-sm-6 offset-md-8">
-                  <div class="input-group">
-                    <%= text_field_tag :search, params[:search], placeholder: "Search by donor name ...", class: "form-control" %>
-                    <span class="input-group-btn">
-                      <%= submit_tag "Search", name: :nil, class: "btn btn-secondary" %>
-                    </span>
-                  </div>
+  <table class="table">
+    <thead class="thead-default">
+      <tr>
+        <td colspan="3">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-4">
+                <div class="input-group">
+                  <%= text_field_tag :search, params[:search], placeholder: "Search by donor name ...", class: "form-control" %>
+                  <span class="input-group-btn">
+                    <%= submit_tag "Search", name: :nil, class: "btn btn-secondary" %>
+                  </span>
                 </div>
               </div>
+              <div class="col-xs-6 col-sm-6 col-md-4">
+                <%= select_tag :cause_id, options_from_collection_for_select(Cause.all, :id, :name), prompt: "--Filter by cause--", include_blank: "All", class: 'form-control', onchange: "myFunc(this.value)" %>
+                <script language="JavaScript" type="text/javascript">
+                   function myFunc(value) {
+                     window.location = "?cause_id="+value
+                   }
+                </script>
+              </div>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <th>Name</th>
-          <th>NRIC/UEN</th>
-          <th>Total Donations</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <% if @donors.blank? && params[:search].present? %>
-            <h4>There are no donors matching <em><%= params[:search] %></em>.</h4>
-          <% end %>
-        </tr>
-        <% @donors.each do |donor| %>
-          <tr>
-            <td><%= donor.name %></td>
-            <td><%= link_to donor_path(donor) do %><%= donor.identification %><% end %></td>
-            <td>$<%= number_with_delimiter(donor.total_donations, delimiter: ",") %></td>
-          </tr>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th>NRIC/UEN</th>
+        <th>Total Donations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% if @donors.blank? && params[:search].present? %>
+        <h4>There are no donors matching <em><%= params[:search] %></em>.</h4>
         <% end %>
-      </tbody>
-    </table>
+      </tr>
+      <% @donors.each do |donor| %>
+      <tr>
+        <td><%= donor.name %></td>
+        <td><%= link_to donor_path(donor) do %><%= donor.identification %><% end %></td>
+        <td>$<%= number_with_delimiter(donor.total_donations(params[:cause_id]), delimiter: ",") %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
   <% end %>
 </div>

@@ -10,7 +10,7 @@
 
 <div>
   <h2>Total Amount Donated</h2>
-  <h1>$<%= number_with_delimiter(@donor.total_donations, delimiter: ",") %></h1>
+  <h1>$<%= number_with_delimiter(@donor.total_donations(params[:cause_id]), delimiter: ",") %></h1>
   <h5>Donor since <%= @donor.created_at.strftime("%d %b %Y") %> (<%= time_ago_in_words(@donor.created_at) %>)</h5>
 </div>
 

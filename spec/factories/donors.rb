@@ -13,6 +13,7 @@ FactoryGirl.define do
     factory :donor_with_donations do
       after(:create) do |donor|
         create_list(:donation, 2, donor: donor)
+        create_list(:donation_with_cause, 2, donor: donor)
       end
     end
   end
