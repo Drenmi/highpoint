@@ -1,6 +1,13 @@
 puts "Seeding Donors ..."
 
 donors = [
+  identification: "Anonymous",
+  name: "Anonymous",
+  address: "",
+  phone_number: "",
+  email_address: ""
+],
+[
   identification: "G1234567M",
   name: "John Smith",
   address: "123 Street, 0123456 Singapore",

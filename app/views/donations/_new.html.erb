@@ -11,7 +11,7 @@
           <%= f.fields_for :donor, @modal_donation.donor do |donor| %>
             <div class="form-group">
               <label for="donorDocs" class="form-control-label">Donor NRIC/UEN</label>
-              <%= donor.text_field :identification, class: "form-control" %>
+              <%= donor.text_field :identification, class: "form-control", placeholder: "Enter 'Anonymous' if unknown" %>
             </div>
           <% end %>
 
