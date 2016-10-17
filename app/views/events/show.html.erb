@@ -47,9 +47,17 @@
             <td><%= donation.donor.name %></td>
             <td><%= l donation.created_at.to_date %></td>
             <td>$<%= number_with_delimiter(donation.amount.round, delimiter: ",") %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+        <td><%= link_to edit_donation_path, data: {toggle: "modal", target: "#donationeditModal"} do %>
+          <i class="fa fa-pencil fa-lg"></i>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
+
+<div>
+  <%= render "events/edit" %>
+</div>
+<% end %>
