@@ -18,7 +18,7 @@
   <table class="table">
     <thead class="thead-default">
       <tr>
-        <th>Date Created</th>
+        <th>Donated on</th>
         <th>Amount</th>
         <th>Cause</th>
         <th>Event</th>
@@ -28,7 +28,7 @@
     <tbody>
       <% @donor.donations.each do |donation| %>
       <tr>
-        <td><%= donation.created_at.to_formatted_s(:short) %> (<%= donation.created_at.strftime("%Y") %>)</td>
+        <td><%= l donation.created_at.to_date, format: donation.created_at.year == Date.today.year ? :short : :default %> </td>
         <td>$<%= donation.amount.to_i %></td>
         <td><%= donation.cause.name %></td>
         <td><% if donation.event %><%= donation.event.name %><% end %></td>
