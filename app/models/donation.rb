@@ -1,4 +1,6 @@
 class Donation < ActiveRecord::Base
+  default_scope { order(created_at: :desc) }
+
   belongs_to :donor, inverse_of: :donations
   belongs_to :cause, inverse_of: :donations
   belongs_to :event, inverse_of: :donations

@@ -7,16 +7,22 @@ donations = [
   event: Event.first
 ],
 [
-  donor: Donor.last,
+  donor: Donor.second,
   cause: Cause.first,
   amount: 200,
   event: Event.first
 ],
 [
-  donor: Donor.last,
+  donor: Donor.second,
   cause: Cause.first,
   amount: 300,
-  event: Event.first
+  event: Event.second
+],
+[
+  donor: Donor.second,
+  cause: Cause.first,
+  amount: 400,
+  event: Event.third
 ]
 
 unless Donation.any?
