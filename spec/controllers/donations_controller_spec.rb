@@ -33,7 +33,7 @@ RSpec.describe DonationsController, type: :controller do
     let(:donation) { Donation.create(amount: 100, donor: donor) }
     let(:cause) { Cause.create(shortcode: "TC", name: "Test Cause") }
     let(:event) { Event.create(name: "Test Event", start_on: "2015-10-19", end_on: "2015-10-20") }
-    let(:attr) { { amount: 200, cause_id: cause.id, event_id: event.id } }
+    let(:attr) { { amount: 200, cause_id: cause.id, event_id: event.id, created_at: "2015-11-22 00:00:00" } }
 
     before(:each) do
       put :update, id: donation.id, donation: attr
@@ -43,5 +43,6 @@ RSpec.describe DonationsController, type: :controller do
     it { expect(donation.amount).to eq attr[:amount] }
     it { expect(donation.cause_id).to eq cause.id }
     it { expect(donation.event_id).to eq event.id }
+    it { expect(donation.created_at).to eq attr[:created_at] }
   end
 end
