@@ -1,0 +1,18 @@
+<div class="form-group">
+  <%= f.label :amount, class: "control-label" %>
+  <%= f.text_field :amount, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <label for="causeOrEvent" class="form-control-label">Cause:</label>
+  <%= f.select :cause_id, Cause.pluck(:name, :id), {}, class:"form-control" %>
+</div>
+
+<div class="form-group">
+  <label for="causeOrEvent" class="form-control-label">Event:</label>
+  <%= f.select :event_id, Event.pluck(:name, :id), {}, class:"form-control" %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Save changes", class: "btn btn-primary form-control" %>
+</div>

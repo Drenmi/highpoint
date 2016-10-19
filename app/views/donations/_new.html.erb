@@ -5,35 +5,15 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-
+        <h5>Donation Details</h5>
         <%= form_for(@modal_donation) do |f| %>
-
           <%= f.fields_for :donor, @modal_donation.donor do |donor| %>
             <div class="form-group">
               <label for="donorDocs" class="form-control-label">Donor NRIC/UEN</label>
               <%= donor.text_field :identification, class: "form-control", placeholder: "Enter 'Anonymous' if unknown" %>
             </div>
           <% end %>
-
-        <div class="form-group">
-          <%= f.label :amount, class: "control-label" %>
-          <%= f.text_field :amount, class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <label for="causeOrEvent" class="form-control-label">Cause</label>
-          <%= f.select :cause_id, options_for_select(Cause.pluck(:name, :id)), {}, class:"form-control" %>
-        </div>
-
-        <div class="form-group">
-          <label for="causeOrEvent" class="form-control-label">Event</label>
-          <%= f.select :event_id, options_for_select(Event.pluck(:name, :id)), {}, class:"form-control" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit class: "btn btn-primary form-control" %>
-        </div>
-
+          <%= render "donations/form", f: f  %>
         <% end %>
       </div>
     </div>

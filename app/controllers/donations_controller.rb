@@ -26,7 +26,9 @@ class DonationsController < ApplicationController
   def edit
     @donation = find_donation(params[:id])
 
-    render :edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
