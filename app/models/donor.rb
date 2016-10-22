@@ -3,7 +3,7 @@ class Donor < ActiveRecord::Base
 
   validates :identification, presence: true, uniqueness: true
 
-  scope :search, -> (keyword) { where("name ILIKE ?", "%#{keyword}%") }
+  scope :search, -> (keyword) { where("name ILIKE :keyword OR identification ILIKE :keyword", keyword: "%#{keyword}%") }
 
   def total_donations(cause_id = nil)
     if cause_id.present?
