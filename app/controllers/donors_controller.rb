@@ -11,6 +11,7 @@ class DonorsController < ApplicationController
               else
                 Donor.all
               end
+    @donors = @donors.includes(:donations).where("donations.cause_id = ?", params[:cause_id]).references(:donations) if params[:cause_id].present?
   end
 
   def update
@@ -37,6 +38,6 @@ class DonorsController < ApplicationController
   end
 
   def donor_params
-    params.require(:donor).permit(:name, :phone_number, :email_address, :address)
+    params.require(:donor).permit(:name, :phone_number, :email_address, :address, donations: [:cause_id])
   end
 end

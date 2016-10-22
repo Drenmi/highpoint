@@ -11,7 +11,8 @@ RSpec.describe Donor, type: :model do
   describe "#total_donations" do
     let(:donor) { create(:donor_with_donations) }
 
-    it { expect(donor.total_donations).to eq(200) }
+    it { expect(donor.total_donations).to eq(400) }
+    it { expect(donor.total_donations(1)).to eq(0) }
   end
 
   describe ".search" do
