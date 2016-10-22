@@ -15,7 +15,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require tether
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
 //= require bootstrap-sprockets
 //= require_tree .
 
@@ -28,5 +29,3 @@ $(document).ready(function(){
     todayHighlight: true
   });
 });
-
-
