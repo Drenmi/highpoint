@@ -21,7 +21,7 @@
 //= require_tree .
 
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
   $('.datepicker').datepicker({
     format: "dd/mm/yyyy",
     weekStart: 1,
