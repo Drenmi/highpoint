@@ -8,7 +8,7 @@
       <%= form_for(@donation) do |f| %>
         <div class="form-group">
           <%= f.label :created_at, "Donated On", class: "control-label" %>
-          <%= f.text_field :created_at, class: "form-control datepicker", value: "#{@donation.created_at.strftime("%d/%m/%Y")}" %>
+          <%= f.text_field :created_at, class: "form-control datepicker", value: l(@donation.created_at.to_date) %>
         </div>
         <%= render "form", f: f  %>
       <% end %>
