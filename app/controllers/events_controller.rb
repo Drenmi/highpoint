@@ -16,15 +16,23 @@ class EventsController < ApplicationController
               else
                 Event.all
               end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
     @event = Event.new(event_params)
+    @events = Event.all
 
-    if @event.save
-      redirect_to events_path, notice: "Event was successfully created."
-    else
-      redirect_to events_path, alert: @event.errors.full_messages.to_sentence
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to events_path }
+        format.js { flash.now[:notice] = "Event was successfully created." }
+      else
+        format.js
+      end
     end
   end
 

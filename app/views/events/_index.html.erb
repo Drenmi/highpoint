@@ -1,0 +1,48 @@
+<% if notice.present? %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+<div class="table-responsive">
+  <%= form_tag events_path, remote: true, method: :get do %>
+    <table class="table">
+      <thead>
+        <tr>
+          <td colspan="3">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4 offset-sm-6 offset-md-8">
+                  <div class="input-group">
+                    <%= text_field_tag :search, params[:search], placeholder: "Search by event name ...", class: "form-control" %>
+                    <span class="input-group-btn">
+                      <%= submit_tag "Search", name: :nil, class: "btn btn-secondary" %>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="thead-default">
+          <th>Name</th>
+          <th>Date</th>
+          <th>Total Donations</th>
+        </tr>
+      </thead>
+      <tbody class="events-index">
+        <tr>
+          <% if @events.blank? %>
+            <h4>There are no events matching <em><%= params[:search] %></em>.</h4>
+          <% end %>
+        </tr>
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= link_to event.name, event_path(event) %></td>
+            <td><%= l event.start_on, format: :short %> - <%= l event.end_on, format: :default %></td>
+            <td>$<%= number_with_delimiter(event.total_donations, delimiter: ",") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

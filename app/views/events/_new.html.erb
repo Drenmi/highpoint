@@ -6,7 +6,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title">Event Details</h4>
-        <%= form_for(@modal_event) do |f| %>
+        <%= form_for @modal_event, remote: true do |f| %>
+          <div class="errors"></div>
           <div class="form-group">
             <%= f.label :name, "Event Name", class: "control-label" %>
             <%= f.text_field :name, class: "form-control" %>
