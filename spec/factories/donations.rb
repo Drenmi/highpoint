@@ -4,6 +4,8 @@ FactoryGirl.define do
 
     amount 100
 
+    created_at Time.zone.today
+
     trait :invalid do
       amount nil
     end

@@ -1,8 +1,9 @@
 .navbar.navbar-light.navbar-static-top
   .collapse.navbar-toggleable-xs#exCollapsingNavbar2
+    = link_to "HCSA Admin", donations_path, class: "navbar-brand"
     ul.nav.navbar-nav
-      li.nav-item = link_to "Donors", donors_path
-      li.nav-item = link_to "Events", events_path
+      li.nav-item = link_to "Donors", donors_path, class: "nav-link"
+      li.nav-item = link_to "Events", events_path, class: "nav-link"
       li.nav-item.pull-sm-right
         .btn-group
           button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
