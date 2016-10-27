@@ -20,7 +20,7 @@
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-4">
-                <%= select_tag :cause_id, options_from_collection_for_select(Cause.all, :id, :name), prompt: "--Filter by cause--", include_blank: "All", class: 'form-control', onchange: "myFunc(this.value)" %>
+                <%= select_tag :cause_id, options_from_collection_for_select(Cause.all, :id, :name, params[:cause_id]), prompt: "--Filter by cause--", include_blank: "All", class: 'form-control', onchange: "myFunc(this.value)" %>
                 <script language="JavaScript" type="text/javascript">
                    function myFunc(value) {
                      window.location = "?cause_id="+value
