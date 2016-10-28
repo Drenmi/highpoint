@@ -1,0 +1,16 @@
+.navbar.navbar-light.navbar-static-top
+  .collapse.navbar-toggleable-xs#exCollapsingNavbar2
+    ul.nav.navbar-nav
+      li.nav-item = link_to "Donors", donors_path
+      li.nav-item = link_to "Events", events_path
+      li.nav-item.pull-sm-right
+        .btn-group
+          button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            = current_user.email
+            span.caret
+          .dropdown-menu.dropdown-menu-right
+            button.dropdown-item type="button" = link_to "Sign out", sign_out_path, method: :delete
+      li.nav-item.pull-sm-right
+        button.btn.btn-primary type="button" data-toggle="modal" data-target="#donationModal"
+          i.fa.fa-plus aria-hidden="true"
+          |  New donation

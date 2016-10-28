@@ -1,0 +1,33 @@
+#edit_partial
+  = link_to edit_donor_url, remote: true do
+    i class="fa fa-pencil fa-lg"
+
+#show_partial
+  = render "show"
+
+div
+  h2 Total Amount Donated
+  h1 $#{number_with_delimiter(@donor.total_donations(params[:cause_id]), delimiter: ",")}
+  h5 Donor since #{@donor.created_at.strftime("%d %b %Y")} (#{time_ago_in_words(@donor.created_at)})
+
+.table-responsive
+  table.table
+    thead.thead-default
+      tr
+        th Donated on
+        th Amount
+        th Cause
+        th Event
+        th
+    tbody
+      - @donor.donations.each do |donation|
+        tr
+          td = l donation.created_at.to_date, format: donation.created_at.year == Date.today.year ? :short : :default
+          td $#{donation.amount.to_i}
+          td = donation.cause&.name
+          td = donation.event&.name
+          td
+            = link_to edit_donation_path(donation), remote: true do
+              i.fa.fa-pencil.fa-lg
+
+.modal.fade#editDonation role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"

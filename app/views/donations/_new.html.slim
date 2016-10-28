@@ -1,0 +1,13 @@
+.modal.fade#donationModal tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  .modal-dialog.modal-sm role="document"
+    .modal-content
+      .modal-body
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+        h5 Donation Details
+        = form_for(@modal_donation) do |f|
+          = f.fields_for :donor, @modal_donation.donor do |donor|
+            .form-group
+              label.form-control-label for="donorDocs" Donor NRIC/UEN
+              = donor.text_field :identification, class: "form-control", placeholder: "Enter 'Anonymous' if unknown"
+          = render "donations/form", f: f

@@ -1,0 +1,14 @@
+.form-group
+  = f.label :amount, class: "control-label"
+  = f.text_field :amount, class: "form-control"
+
+.form-group
+  label.form-control-label for="causeOrEvent" Cause:
+  = f.select :cause_id, Cause.pluck(:name, :id), {}, class:"form-control"
+
+.form-group
+  label.form-control-label for="causeOrEvent" Event:
+  = f.select :event_id, Event.pluck(:name, :id), {}, class:"form-control"
+
+.actions
+  = f.submit "Save changes", class: "btn btn-primary form-control"

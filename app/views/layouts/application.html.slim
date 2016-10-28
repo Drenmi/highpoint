@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Highpoint
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body
+    - if signed_in?
+      = render "donations/new"
+      = render "layouts/navbar"
+
+    - flash.each do |key, value|
+      .alert
+        = value
+
+    .container
+      = yield
