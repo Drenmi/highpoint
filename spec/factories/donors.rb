@@ -5,6 +5,9 @@ FactoryGirl.define do
 
   factory :donor do
     identification
+    trait name do
+      name "Test"
+    end
 
     trait :invalid do
       identification nil

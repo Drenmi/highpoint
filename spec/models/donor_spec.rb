@@ -16,13 +16,15 @@ RSpec.describe Donor, type: :model do
   end
 
   describe ".search" do
-    let(:match_beginning) { create(:donor, name: "Smithie Black") }
-    let(:match_middle) { create(:donor, name: "Bob Smith-White") }
-    let(:match_end) { create(:donor, name: "John Smith") }
-    let(:no_match) { create(:donor, name: "Carl Grey") }
-    let(:match_identification) { create(:donor, identification: "G1234567M") }
+    before do
+      @match_beginning = create(:donor, name: "Smithie Black")
+      @match_middle = create(:donor, name: "Bob Smith-White")
+      @match_end = create(:donor, name: "John Smith")
+      @no_match = create(:donor, name: "Carl Grey")
+      @match_identification = create(:donor, identification: "B777888A")
+    end
 
-    it { expect(described_class.search("smith")).to contain_exactly(match_beginning, match_middle, match_end) }
-    it { expect(described_class.search("g123")).to contain_exactly(match_identification) }
+    it { expect(described_class.search("smith")).to contain_exactly(@match_beginning, @match_middle, @match_end) }
+    it { expect(described_class.search("b777")).to contain_exactly(@match_identification) }
   end
 end

@@ -11,6 +11,10 @@ class DonationsController < ApplicationController
     end
   end
 
+  def index
+    @donations = Donation.all
+  end
+
   # PATCH /update
   def update
     @donation = find_donation(params[:id])

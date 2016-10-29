@@ -1,0 +1,7 @@
+.card.card-inverse.card-info.text-xs-center
+  .card.card-inverse.card-info.text-xs-center
+    .card-block
+      h1 Total Donations for #{Date.today.year}
+      h1 $#{@donations.donations_per_year(Date.current.year).sum(:amount).round}
+
+
