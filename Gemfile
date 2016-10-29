@@ -6,6 +6,8 @@ gem "rails", "~> 4.2.7.1"
 
 gem "pg", "~> 0.15"
 
+gem "slim-rails"
+
 gem "sass-rails", "~> 5.0"
 gem "rails-assets-tether", "~> 1.1.0"
 gem "bootstrap", "~> 4.0.0.alpha4"

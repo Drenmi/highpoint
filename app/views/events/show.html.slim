@@ -1,0 +1,34 @@
+= link_to "< Back to Event List", events_path
+.row
+  .col-xs-12.col-sm-8
+    h1 = @event.name
+.card.card-inverse.card-info.text-xs-center
+  .card-block
+    h1 Total amount donated
+    h1 $#{number_with_delimiter(@event.total_donations, delimiter: ",")}
+.table-responsive
+  = form_tag @event, method: :get do
+    table.table
+      thead.thead-default
+        tr
+          td colspan="3"
+            .container-fluid
+              .row
+                .col-xs-12.col-sm-6.offset-sm-6.col-md-4.offset-md-8
+                  div.input-group
+                    = text_field_tag :search, params[:search], placeholder: "Search by donor name ...", class: "form-control"
+                    span.input-group-btn
+                      = submit_tag "Search", name: :nil, class: "btn btn-secondary"
+        tr
+          th Name
+          th Date
+          th Total Donations
+      tbody
+        tr
+          - if @donations.blank? && params[:search].present?
+            h4 There is no donor matching <em>#{params[:search]}</em>.
+        - @donations.each do |donation|
+          tr
+            td = donation.donor.name
+            td = l donation.created_at.to_date
+            td $#{number_with_delimiter(donation.amount.round, delimiter: ",")}

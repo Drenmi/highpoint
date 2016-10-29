@@ -1,0 +1,20 @@
+.container-fluid
+  .row
+    .col-sm-4.offset-sm-4
+      .sign-in#clearance
+        h2.text-center = t(".title")
+        = form_for :session, url: session_path do |form|
+          .form-group
+            .input-group
+              span.input-group-addon#basic-addon1
+                = fa_icon "envelope", class: "fa-fw"
+              = form.text_field :email, type: "email", class: "form-control"
+
+          .form-group
+            .input-group
+              span.input-group-addon#basic-addon1
+                = fa_icon "lock", class: "fa-fw"
+              = form.password_field :password, class: "form-control"
+
+          .form-group
+            = form.submit class: "form-control btn btn-primary"
