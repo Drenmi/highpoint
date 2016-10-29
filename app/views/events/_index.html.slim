@@ -19,6 +19,7 @@
           th Name
           th Date
           th Total Donations
+          th
       tbody.events-index
         tr
           - if @events.blank?
@@ -26,5 +27,16 @@
         - @events.each do |event|
           tr
             td = link_to event.name, event_path(event)
-            td #{l event.start_on, format: :short} - #{l event.end_on, format: :default}
+            - if event.start_on == event.end_on
+              td #{l event.start_on, format: :default}
+            - elsif event.start_on.year != event.end_on.year
+              td #{l event.start_on, format: :default} - #{l event.end_on, format: :default}
+            - else
+              td #{l event.start_on, format: :short} - #{l event.end_on, format: :default}
             td $#{number_with_delimiter(event.total_donations, delimiter: ",")}
+            td
+              = link_to edit_event_path(event), remote: true do
+                i.fa.fa-pencil.fa-lg
+
+.modal.fade#editEvent role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+

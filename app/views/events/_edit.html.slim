@@ -1,0 +1,8 @@
+.modal-dialog.modal-sm role="document"
+  .modal-content
+    .modal-body
+      button.close type="button" data-dismiss="modal" aria-label="Close"
+        span aria-hidden="true" &times;
+      h5 Edit Event Details
+      = form_for(@event, remote: true) do |f|
+        = render "form", f: f

@@ -1,13 +1,18 @@
 class EventsController < ApplicationController
   before_action :prepare_modal_event
 
-  def show
-    @event = find_event(params[:id])
-    @donations = if params[:search]
-                   @event.donations.search(params[:search])
-                 else
-                   @event.donations
-                 end
+  def create
+    @event = Event.new(event_params)
+    @events = Event.all
+
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to events_path }
+        format.js { flash.now[:notice] = "Event was successfully created." }
+      else
+        format.js
+      end
+    end
   end
 
   def index
@@ -22,17 +27,36 @@ class EventsController < ApplicationController
     end
   end
 
-  def create
-    @event = Event.new(event_params)
+  def show
+    @event = find_event(params[:id])
+    @donations = if params[:search]
+                   @event.donations.search(params[:search])
+                 else
+                   @event.donations
+                 end
+  end
+
+  # PATCH /update
+  def update
+    @event = find_event(params[:id])
     @events = Event.all
 
     respond_to do |format|
-      if @event.save
+      if @event.update(event_params)
         format.html { redirect_to events_path }
-        format.js { flash.now[:notice] = "Event was successfully created." }
+        format.js { flash.now[:notice] = "Event was successfully updated." }
       else
         format.js
       end
+    end
+  end
+
+  # GET /edit
+  def edit
+    @event = find_event(params[:id])
+
+    respond_to do |format|
+      format.js
     end
   end
 
