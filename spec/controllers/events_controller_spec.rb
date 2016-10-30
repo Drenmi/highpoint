@@ -60,4 +60,18 @@ RSpec.describe EventsController, type: :controller do
       it { expect(response).to have_http_status(:success) }
     end
   end
+
+  describe "PUT #update/:id" do
+    let(:event) { Event.create(name: "Test Event", start_on: 2.years.ago, end_on: 1.year.ago + 3.days) }
+    let(:attr) { { name: "Edited event", start_on: 1.year.ago.to_date, end_on: (1.year.ago + 1.day).to_date } }
+
+    before(:each) do
+      put :update, id: event.id, event: attr
+      event.reload
+    end
+
+    it { expect(event.name).to eq attr[:name] }
+    it { expect(event.start_on).to eq attr[:start_on] }
+    it { expect(event.end_on).to eq attr[:end_on] }
+  end
 end
