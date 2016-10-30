@@ -4,7 +4,7 @@
       .modal-body
         button.close type="button" data-dismiss="modal" aria-label="Close"
           span aria-hidden="true" &times;
-        h5 Donation Details
+        h5.modal-title Donation Details
         = form_for(@modal_donation) do |f|
           = f.fields_for :donor, @modal_donation.donor do |donor|
             .form-group

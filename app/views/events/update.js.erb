@@ -1,0 +1,13 @@
+$("div.errors").html("")
+<% if @event.errors.any? %>
+  <% @event.errors.full_messages.each do |message| %>
+    $("div.errors").append($("<div />").html("<%= message.html_safe %>").addClass("alert alert-danger"))
+  <% end %>
+<% else %>
+  $("#editEvent").modal("hide")
+  $('body').removeClass('modal-open');
+  $('.modal-backdrop').remove();
+  $(".table-responsive").html("<%= escape_javascript(render 'index') %>")
+<% end %>
+
+

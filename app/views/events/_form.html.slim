@@ -1,0 +1,12 @@
+.errors
+.form-group
+  = f.label :name, "Event Name", class: "control-label"
+  = f.text_field :name, class: "form-control"
+.form-group
+  = f.label :start_on, "Start Date", class: "control-label"
+  = f.text_field :start_on, class: "form-control datepicker", value:(@event.present? ? l(@event.start_on) : "")
+.form-group
+  = f.label :end_on, "End Date", class: "control-label"
+  = f.text_field :end_on, class: "form-control datepicker", value:(@event.present? ? l(@event.end_on) : "")
+.actions
+  = f.submit class: "btn btn-primary form-control"
