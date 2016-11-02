@@ -10,8 +10,8 @@
             = current_user.email
             span.caret
           .dropdown-menu.dropdown-menu-right
-            button.dropdown-item type="button" = link_to "Sign out", sign_out_path, method: :delete
             button.dropdown-item type="button" = link_to "My Profile", user_path(current_user)
+            button.dropdown-item type="button" = link_to "Sign out", sign_out_path, method: :delete
       li.nav-item.pull-sm-right
         button.btn.btn-primary type="button" data-toggle="modal" data-target="#donationModal"
           i.fa.fa-plus aria-hidden="true"
