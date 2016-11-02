@@ -29,3 +29,9 @@ $(document).on('turbolinks:load', function() {
     todayHighlight: true
   });
 });
+
+$( document ).ready(function() {
+  $('.modal').on('show.bs.modal', function (e) {
+    $("div.errors").html("");
+  });
+});
