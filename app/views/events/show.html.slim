@@ -5,7 +5,7 @@
 .card.card-inverse.card-info.text-xs-center
   .card-block
     h1 Total amount donated
-    h1 $#{number_with_delimiter(@event.total_donations, delimiter: ",")}
+    h1 $#{number_with_delimiter(@event.total_donations(params[:search]), delimiter: ",")}
 .table-responsive
   = form_tag @event, method: :get do
     table.table
@@ -20,9 +20,15 @@
                     span.input-group-btn
                       = submit_tag "Search", name: :nil, class: "btn btn-secondary"
         tr
-          th Name
-          th Date
-          th Total Donations
+          th 
+            | Name
+            = sortable :donor_name
+          th 
+            | Date
+            = sortable :created_at
+          th 
+            | Donation
+            = sortable :amount
       tbody
         tr
           - if @donations.blank? && params[:search].present?

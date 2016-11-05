@@ -51,8 +51,8 @@ RSpec.describe EventsController, type: :controller do
   end
 
   describe "GET #show" do
-    let(:donation) { instance_double(Donation, amount: 100) }
-    let(:event) { instance_double(Event, donations: donation) }
+    let(:donation) { FactoryGirl.build(:donation, amount: 100) }
+    let(:event) { FactoryGirl.build(:event, donations: [donation]) }
 
     before { get :show, id: 1 }
 
