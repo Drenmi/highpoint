@@ -6,13 +6,7 @@ class DonorsController < ApplicationController
 
   # GET /donors
   def index
-    @donors = if params[:total_donations] == "asc"
-                searched_donors.sort_by(&:total_donations)
-              elsif params[:total_donations] == "desc"
-                searched_donors.sort_by(&:total_donations).reverse
-              else
-                searched_donors
-              end
+    @donors = DonorsFinder.new(params).find_all
   end
 
   def update
@@ -40,21 +34,5 @@ class DonorsController < ApplicationController
 
   def donor_params
     params.require(:donor).permit(:name, :phone_number, :email_address, :address)
-  end
-
-  def filtered_donors
-    if params[:cause_id].present?
-      Cause.find(params[:cause_id]).donors
-    else
-      Donor.all
-    end
-  end
-
-  def searched_donors
-    if params[:search]
-      filtered_donors.search(params[:search])
-    else
-      filtered_donors
-    end
   end
 end

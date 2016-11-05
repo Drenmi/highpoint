@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
     @modal_donation = Donation.new
     @modal_donation.build_donor
   end
+
+  def safe_params(unsafe = {})
+    params.merge(unsafe).merge(only_path: true)
+  end
+  helper_method :safe_params
 end
