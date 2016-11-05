@@ -22,6 +22,9 @@ gem "jquery-rails"
 
 gem "turbolinks"
 
+gem "chartkick"
+gem "groupdate"
+
 group :production do
   gem "rails_12factor"
 end

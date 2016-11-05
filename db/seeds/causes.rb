@@ -17,6 +17,7 @@ causes = [
   name: "RTC"
 ]
 
+
 unless Cause.any?
   Cause.create!(causes)
 end
