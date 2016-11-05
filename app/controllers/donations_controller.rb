@@ -4,10 +4,14 @@ class DonationsController < ApplicationController
     donor = find_or_build_donor(donation_params.delete(:donor))
     @donation = Donation.new(donation_params.merge(donor: donor))
 
-    if @donation.save
-      redirect_to donor_path(@donation.donor), notice: "Donation was successfully created."
-    else
-      redirect_to :back, error: @donation.errors.full_messages.to_sentence
+    respond_to do |format|
+      if @donation.save
+        format.js {}
+        format.html {}
+        redirect_to donor_path(@donation.donor), notice: "Donation was successfully created."
+      else
+        format.js
+      end
     end
   end
 
@@ -19,10 +23,14 @@ class DonationsController < ApplicationController
   def update
     @donation = find_donation(params[:id])
 
-    if @donation.update(donation_params)
-      redirect_to donor_path(@donation.donor), notice: "Donation was successfully updated."
-    else
-      redirect_to donor_path(@donation.donor), error: "Failed to update donation."
+    respond_to do |format|
+      if @donation.update(donation_params)
+        format.js {}
+        format.html {}
+        redirect_to donor_path(@donation.donor), notice: "Donation was successfully updated."
+      else
+        format.js
+      end
     end
   end
 

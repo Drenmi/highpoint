@@ -1,0 +1,8 @@
+$("div.errors").html("")
+<% if @donation.errors.any? %>
+  <% @donation.errors.full_messages.each do |message| %>
+    $("div.errors").append($("<div />").html("<%= message.html_safe %>").addClass("alert alert-danger"))
+  <% end %>
+<% else %>
+  $("#donationModal").modal("hide")
+<% end %>

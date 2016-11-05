@@ -4,7 +4,7 @@
       button.close type="button" data-dismiss="modal" aria-label="Close"
         span aria-hidden="true" &times;
       h5 Edit Donation Details
-      = form_for(@donation) do |f|
+      = form_for(@donation, remote: true) do |f|
         .form-group
           = f.label :created_at, "Donated On", class: "control-label"
           = f.text_field :created_at, class: "form-control datepicker", value: l(@donation.created_at.to_date)

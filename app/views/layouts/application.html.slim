@@ -10,9 +10,5 @@ html
       = render "donations/new"
       = render "layouts/navbar"
 
-    - flash.each do |key, value|
-      .alert
-        = value
-
     .container
       = yield
