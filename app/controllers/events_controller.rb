@@ -69,9 +69,4 @@ class EventsController < ApplicationController
   def find_event(id)
     Event.find(id)
   end
-
-  def safe_params(unsafe = {})
-    params.merge(unsafe).merge(only_path: true)
-  end
-  helper_method :safe_params
 end

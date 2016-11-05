@@ -1,4 +1,6 @@
 class Donor < ActiveRecord::Base
+  default_scope { order(created_at: :desc) }
+
   has_many :donations, inverse_of: :donor
 
   validates :identification, presence: true, uniqueness: true

@@ -1,12 +1,14 @@
-class EventsFinder
+class DonorsFinder
   def initialize(params)
-    @sort_column = params[:sort] || "start_on"
+    @sort_column = params[:sort] || "created_at"
     @sort_direction = params[:direction] || "DESC"
     @keyword = params[:search]
-    @result = Event.unscoped
+    @filter = params[:cause_id]
+    @result = Donor.unscoped
   end
 
   def find_all
+    filter
     search
     sort
   end
@@ -15,6 +17,10 @@ class EventsFinder
 
   def search
     @result = @result.search(@keyword) if @keyword
+  end
+
+  def filter
+    @result = Cause.find(@filter).donors if @filter.present?
   end
 
   def sort
