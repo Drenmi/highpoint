@@ -17,9 +17,23 @@
                       = submit_tag "Search", name: :nil, class: "btn btn-secondary"
         tr.thead-default
           th Name
-          th Date
-          th Total Donations
-          th
+          th 
+            | Date
+            .btn-group.btn-group-sm
+              button.btn.btn-secondary data-toggle="dropdown" type="button"
+                i.fa.fa-caret-down.fa-lg
+              ul.dropdown-menu role="menu"
+                li= link_to "Latest event first", safe_params(sort: "start_on", direction: "DESC")
+                li= link_to "Earliest event first", safe_params(sort: "start_on", direction: "ASC")
+          th 
+            | Total Donations
+            .btn-group.btn-group-sm
+              button.btn.btn-secondary data-toggle="dropdown" type="button"
+                i.fa.fa-caret-down.fa-lg
+              ul.dropdown-menu role="menu"
+                li= link_to "Lowest first", safe_params(sort: "total_donations", direction: "ASC")
+                li= link_to "Highest first", safe_params(sort: "total_donations", direction: "DESC")
+
       tbody.events-index
         tr
           - if @events.blank?
@@ -39,4 +53,3 @@
                 i.fa.fa-pencil.fa-lg
 
 .modal.fade#editEvent role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-

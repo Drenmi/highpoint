@@ -16,10 +16,16 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = if params[:search]
-                Event.search(params[:search])
+    @events = if sort_column == "start_on"
+                searched_events.order(sort_column + " " + sort_direction)
+              elsif sort_column == "total_donations"
+                if sort_direction == "ASC"
+                  searched_events.sort_by(&:total_donations)
+                else
+                  searched_events.sort_by(&:total_donations).reverse
+                end
               else
-                Event.all
+                searched_events
               end
     respond_to do |format|
       format.html
@@ -73,4 +79,25 @@ class EventsController < ApplicationController
   def find_event(id)
     Event.find(id)
   end
+
+  def sort_column
+    params[:sort] || "start_on"
+  end
+
+  def sort_direction
+    params[:direction] || "DESC"
+  end
+
+  def searched_events
+    if params[:search]
+      Event.search(params[:search])
+    else
+      Event.all
+    end
+  end
+
+  def safe_params(unsafe = {})
+    params.merge(unsafe).merge(only_path: true)
+  end
+  helper_method :safe_params
 end
