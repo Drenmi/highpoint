@@ -25,6 +25,8 @@ gem "turbolinks"
 gem "chartkick"
 gem "groupdate"
 
+gem "sendgrid-ruby"
+
 group :production do
   gem "rails_12factor"
 end

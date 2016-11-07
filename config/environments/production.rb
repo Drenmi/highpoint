@@ -78,4 +78,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: "localhost:3000" }
+
+  ActionMailer::Base.smtp_settings = {
+    user_name: "apikey",
+    password: "SGAPIKEY",
+    domain: "http://highpoint.herokuapp.com",
+    address: "smtp.sendgrid.net",
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 end

@@ -1,0 +1,17 @@
+.row.margin-top
+  .col-xs-12.col-sm-8.offset-sm-2.col-md-4.offset-md-4
+    h5.text-xs-center = t(".description")
+    = form_for :password_reset,
+        url: user_password_path(@user, token: @user.confirmation_token),
+        html: { method: :put } do |form|
+
+      .form-group
+        = form.label :password, "New Password"
+        = form.password_field :password, id: "password", class: 'form-control', required: "true"
+
+      .form-group
+        = form.label :confirm_password, "Confirm password"
+        = form.password_field :cofirm_password, id: "password-confirm", class: 'form-control', required: "true", oninput: "check(this)"
+
+      .submit-field
+        = form.submit "Submit", class: 'btn btn-primary'
