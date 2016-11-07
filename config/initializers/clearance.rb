@@ -7,7 +7,7 @@ Clearance.configure do |config|
   config.cookie_path = "/"
   config.routes = true
   config.httponly = false
-  config.mailer_sender = "reply@example.com"
+  config.mailer_sender = "test@hcsa.org.sg"
   config.password_strategy = Clearance::PasswordStrategies::BCrypt
   config.redirect_url = "/"
   config.secure_cookie = false
