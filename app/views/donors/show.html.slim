@@ -30,7 +30,9 @@ div
             td = l donation.created_at.to_date, format: donation.created_at.year == Date.today.year ? :short : :default
             td $#{donation.amount.to_i}
             td = donation.cause&.name
-            td = link_to donation.event&.name, event_path(donation.event)
+            td
+              -if donation.event.present?
+                = link_to donation.event.name, event_path(donation.event)
             td
               = link_to edit_donation_path(donation), remote: true do
                 i.fa.fa-pencil.fa-lg

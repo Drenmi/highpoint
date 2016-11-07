@@ -17,6 +17,7 @@ class DonationsController < ApplicationController
 
   def index
     @donations = Donation.all
+    @causes = Cause.all
   end
 
   # PATCH /update
