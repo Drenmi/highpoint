@@ -18,16 +18,16 @@
                 .col-xs-6.col-sm-6.col-md-4
                   = select_tag :cause_id, options_from_collection_for_select(Cause.all, :id, :name, params[:cause_id]), prompt: "Filter by cause:", class: 'form-control', onchange: "cause_toggle(this.value)"
         tr
-          th Name
-          th NRIC/UEN
+          th 
+            | Name
+            = sortable :name
+          th 
+            | NRIC/UEN
+            = sortable :identification
           th
             | Total Donations
-            .btn-group.btn-group-sm
-              button.btn.btn-secondary data-toggle="dropdown" type="button"
-                i.fa.fa-caret-down.fa-lg
-              ul.dropdown-menu role="menu"
-                li= link_to "Lowest first", safe_params(sort: "total_donations", direction: "ASC")
-                li= link_to "Highest first", safe_params(sort: "total_donations", direction: "DESC")
+            = sortable :total_donations
+          th
       tbody
         tr
           - if @donors.blank? && params[:search].present?

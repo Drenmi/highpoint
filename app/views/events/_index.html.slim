@@ -16,24 +16,16 @@
                     span.input-group-btn
                       = submit_tag "Search", name: :nil, class: "btn btn-secondary"
         tr.thead-default
-          th Name
+          th 
+            | Name
+            = sortable :name
           th 
             | Date
-            .btn-group.btn-group-sm
-              button.btn.btn-secondary data-toggle="dropdown" type="button"
-                i.fa.fa-caret-down.fa-lg
-              ul.dropdown-menu role="menu"
-                li= link_to "Latest event first", safe_params(sort: "start_on", direction: "DESC")
-                li= link_to "Earliest event first", safe_params(sort: "start_on", direction: "ASC")
+            = sortable :start_on
           th 
             | Total Donations
-            .btn-group.btn-group-sm
-              button.btn.btn-secondary data-toggle="dropdown" type="button"
-                i.fa.fa-caret-down.fa-lg
-              ul.dropdown-menu role="menu"
-                li= link_to "Lowest first", safe_params(sort: "total_donations", direction: "ASC")
-                li= link_to "Highest first", safe_params(sort: "total_donations", direction: "DESC")
-
+            = sortable :total_donations
+          th
       tbody.events-index
         tr
           - if @events.blank?
