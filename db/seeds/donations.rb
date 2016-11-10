@@ -3,6 +3,20 @@ puts "Seeding Donations ..."
 donations = [
   donor: Donor.first,
   cause: Cause.first,
+  amount: 20,
+  event: Event.first,
+  created_at: 1.year.ago - 4.months
+],
+[
+  donor: Donor.first,
+  cause: Cause.first,
+  amount: 50,
+  event: Event.second,
+  created_at: 1.year.ago - 1.months
+],
+[
+  donor: Donor.first,
+  cause: Cause.first,
   amount: 100,
   event: Event.first,
   created_at: 6.months.ago
@@ -17,9 +31,16 @@ donations = [
 [
   donor: Donor.second,
   cause: Cause.first,
+  amount: 250,
+  event: Event.first,
+  created_at: 2.months.ago - 9.days
+],
+[
+  donor: Donor.second,
+  cause: Cause.first,
   amount: 350,
   event: Event.first,
-  created_at: 2.months.ago - 5.days
+  created_at: 2.months.ago - 1.days
 ],
 [
   donor: Donor.second,

@@ -9,5 +9,7 @@ class Donation < ActiveRecord::Base
 
   scope :search, ->(keyword) { joins(:donor).where("name ILIKE ?", "%#{keyword}%") }
 
-  scope :donations_per_year, ->(year) { where("EXTRACT(YEAR FROM created_at) = ?", year) }
+  scope :donations_for_year, ->(year) { where("EXTRACT(YEAR FROM donations.created_at) = ?", year) }
+
+  scope :donations_for_month, ->(year, month) { where("EXTRACT(YEAR FROM donations.created_at) = ? AND EXTRACT(MONTH FROM donations.created_at) = ?", year, month) }
 end
