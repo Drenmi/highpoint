@@ -24,3 +24,18 @@
  .margin-top {
    margin-top: 3rem;
  }
+
+ th a.sort-icon {
+   margin-left: 5px;
+     &:focus,
+     &:hover,
+     &:active {
+       text-decoration: none;
+     }
+     &.sort-icon-down {
+       vertical-align: -25%;
+     }
+     &.sort-icon-up {
+       vertical-align: 0px;
+     }
+  }
