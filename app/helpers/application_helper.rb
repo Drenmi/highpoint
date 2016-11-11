@@ -3,12 +3,12 @@ module ApplicationHelper
     css_class =
       if column.to_s == params[:sort]
         if params[:direction] == "ASC"
-          "fa fa-caret-up fa-lg text-success"
+          "fa fa-caret-up fa-lg text-success sort-icon sort-icon-up"
         else
-          "fa fa-caret-down fa-lg text-success"
+          "fa fa-caret-down fa-lg text-success sort-icon sort-icon-down"
         end
       else
-        "fa fa-sort fa-lg"
+        "fa fa-sort fa-lg sort-icon sort-icon-both"
       end
     direction =
       if column.to_s == params[:sort] && params[:direction] == "ASC"
