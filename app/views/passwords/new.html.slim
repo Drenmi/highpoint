@@ -1,0 +1,15 @@
+- flash.each do |key, value|
+  .alert.alert-danger.text-xs-center
+    = value
+.row.margin-top
+  .col-xs-12.col-sm-8.offset-sm-2.col-md-4.offset-md-4
+    = t(".description")
+    = form_for :password, url: passwords_path do |form|
+      .form-group
+        = form.email_field :email, class: 'form-control', required: "true"
+
+      .form-group
+      	= form.submit 'Submit', class: 'btn btn-primary'
+
+      .form-group
+        = link_to "Sign In", sign_in_path

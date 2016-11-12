@@ -2,12 +2,12 @@ Clearance.configure do |config|
   config.routes = false
   config.allow_sign_up = false
   config.cookie_domain = ".example.com"
-  config.cookie_expiration = -> (_cookies) { 1.year.from_now.utc }
+  config.cookie_expiration = ->(_cookies) { 1.year.from_now.utc }
   config.cookie_name = "remember_token"
   config.cookie_path = "/"
   config.routes = true
   config.httponly = false
-  config.mailer_sender = "reply@example.com"
+  config.mailer_sender = "no_reply@hcsa.org.sg"
   config.password_strategy = Clearance::PasswordStrategies::BCrypt
   config.redirect_url = "/"
   config.secure_cookie = false

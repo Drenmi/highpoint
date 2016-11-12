@@ -1,3 +1,6 @@
+- flash.each do |key, value|
+  .alert.alert-danger.text-xs-center
+    = value
 .container-fluid
   .row
     .col-sm-4.offset-sm-4
@@ -18,3 +21,6 @@
 
           .form-group
             = form.submit class: "form-control btn btn-primary"
+
+          .form-group
+            = link_to "Forgot password?", new_password_path

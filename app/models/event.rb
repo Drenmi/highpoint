@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
     end
   end
 
-  scope :search, -> (keyword) { where("name ILIKE ?", "%#{keyword}%") }
+  scope :search, ->(keyword) { where("name ILIKE ?", "%#{keyword}%") }
 
   def total_donations
     donations.sum(:amount).round
