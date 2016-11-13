@@ -1,1 +1,12 @@
+- if notice.present?
+  .alert.alert-success role="alert"
+    = notice
+
 h3 Hi #{current_user.email}
+ 
+h4 
+= render "users/new"
+button.btn.btn-primary type="button" data-toggle="modal" data-target="#userModal"
+  i.fa.fa-plus aria-hidden="true"
+  |  Add new user
+  

@@ -1,0 +1,9 @@
+.modal.fade#userModal tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  .modal-dialog.modal-sm role="document"
+    .modal-content
+      .modal-body
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+        h5.modal-title User Details
+        = form_for(@modal_user, remote: true) do |f|
+          = render "users/form", f: f

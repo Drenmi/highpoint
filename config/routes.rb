@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   end
   resources :donors, only: [:index, :show, :update, :edit]
   resources :events, only: [:create, :index, :show, :update, :edit]
-  resources :users, only: [:show]
+  resources :users, only: [:create, :show]
 end
