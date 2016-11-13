@@ -5,7 +5,7 @@ class Cause < ActiveRecord::Base
   validates :shortcode, presence: true
   validates :name, presence: true, uniqueness: true
 
-  def top_donation_for_year(_year = Date.current.year)
-    donations.where("donations.created_at BETWEEN ? AND ?", Date.current.beginning_of_year, Date.current.end_of_year).order("amount DESC").first
+  def top_donation_for_year(year = Date.current.year)
+    donations.where("EXTRACT(YEAR from donations.created_at) = ?", year).order("amount DESC").first
   end
 end
