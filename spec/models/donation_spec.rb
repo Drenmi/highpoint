@@ -19,12 +19,12 @@ RSpec.describe Donation, type: :model do
     it { expect(described_class.search("smith")).to match_array [@match_behinning, @match_middle, @match_end] }
   end
 
-  describe ".donations_per_year" do
+  describe ".donations_for_year" do
     before do
       create_list(:donation, 2)
       create(:donation, created_at: 1.year.ago)
     end
 
-    it { expect(described_class.donations_per_year(Date.current.year).sum(:amount).round).to eq(200) }
+    it { expect(described_class.donations_for_year(Date.current.year).sum(:amount).round).to eq(200) }
   end
 end

@@ -1,0 +1,14 @@
+.row.col-xs-12.col-md-10.offset-md-1.text-xs-center
+  .col-xs-6.col-md-3
+    <b>Year:</b> #{report.year}
+  .col-xs-6.col-md-3
+    <b>Month:</b> #{report.month.presence || "All" }
+  .col-xs-6.col-md-3
+    <b>Cause:</b> #{!report.cause_id.empty? ? Cause.where("ID = ?", report.cause_id).first.name  : "All"}
+  .col-xs-6.col-md-3
+    <b>Event:</b> #{!report.event_id.empty? ? Event.where("ID = ?", report.event_id).first.name  : "All"}
+
+
+.row.margin-top
+  = display_chart(report)
+
