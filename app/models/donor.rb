@@ -1,4 +1,6 @@
 class Donor < ActiveRecord::Base
+  has_paper_trail
+
   self.per_page = 15
 
   default_scope { order(created_at: :desc) }

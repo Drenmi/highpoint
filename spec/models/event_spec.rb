@@ -25,4 +25,23 @@ RSpec.describe Event, type: :model do
 
     it { expect(event).to_not be_valid }
   end
+
+  describe "paper_trail", versioning: true do
+    it { is_expected.to be_versioned }
+
+    let(:event) { Event.create! name: "First name", start_on: 1.year.ago, end_on: 5.months.ago }
+
+    before do
+      event.update_attributes!(name: "Second name")
+      event.update_attributes!(name: "Third name")
+      event.update_attributes!(name: "First name")
+    end
+
+    it "is possible to do assertions on version attributes" do
+      expect(event).to have_a_version_with name: "Second name"
+      expect(event).to have_a_version_with name: "Third name"
+      expect(event).to have_a_version_with name: "First name"
+      expect(event).to_not have_a_version_with name: "Random name"
+    end
+  end
 end

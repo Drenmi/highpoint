@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  has_paper_trail
+
   has_many :donations, inverse_of: :event
 
   validates :start_on, presence: true
