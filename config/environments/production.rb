@@ -80,8 +80,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "localhost:3000" }
 
   ActionMailer::Base.smtp_settings = {
-    user_name: "apikey",
-    password: "SGAPIKEY",
+    user_name: ENV["SENDGRID_USERNAME"],
+    password: ENV["SENDGRID_PASSWORD"],
     domain: "http://highpoint.herokuapp.com",
     address: "smtp.sendgrid.net",
     port: 587,
