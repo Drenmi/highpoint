@@ -13,5 +13,9 @@ FactoryGirl.define do
     factory :donation_with_cause do
       cause
     end
+
+    factory :donation_with_event do
+      event
+    end
   end
 end
