@@ -29,6 +29,8 @@ gem "sendgrid-ruby"
 
 gem "will_paginate"
 
+gem "paper_trail"
+
 group :production do
   gem "rails_12factor"
 end

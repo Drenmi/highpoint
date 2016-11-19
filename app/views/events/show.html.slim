@@ -1,7 +1,10 @@
 = link_to "< Back to Event List", events_path
 .row
-  .col-xs-12.col-sm-8
+  .col-xs-12
     h1 = @event.name
+    p = event_dates(@event)
+    p.metadata = event_whodunnit(@event)
+
 .card.card-inverse.card-info.text-xs-center
   .card-block
     h1 Total amount donated

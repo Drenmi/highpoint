@@ -16,13 +16,13 @@
                     span.input-group-btn
                       = submit_tag "Search", name: :nil, class: "btn btn-secondary"
         tr.thead-default
-          th 
+          th
             | Name
             = sortable :name
-          th 
+          th
             | Date
             = sortable :start_on
-          th 
+          th
             | Total Donations
             = sortable :total_donations
           th
@@ -33,12 +33,7 @@
         - @events.each do |event|
           tr
             td = link_to event.name, event_path(event)
-            - if event.start_on == event.end_on
-              td #{l event.start_on, format: :default}
-            - elsif event.start_on.year != event.end_on.year
-              td #{l event.start_on, format: :default} - #{l event.end_on, format: :default}
-            - else
-              td #{l event.start_on, format: :short} - #{l event.end_on, format: :default}
+            td = event_dates(event)
             td $#{number_with_delimiter(event.total_donations, delimiter: ",")}
             td
               = link_to edit_event_path(event), remote: true do
