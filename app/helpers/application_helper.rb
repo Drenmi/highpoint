@@ -10,6 +10,7 @@ module ApplicationHelper
       else
         "fa fa-sort fa-lg sort-icon sort-icon-both"
       end
+
     direction =
       if column.to_s == params[:sort] && params[:direction] == "ASC"
         "DESC"

@@ -25,11 +25,7 @@ class EventsController < ApplicationController
 
   def show
     @event = find_event(params[:id])
-    @donations = if params[:search]
-                   @event.donations.search(params[:search])
-                 else
-                   @event.donations
-                 end
+    @donations = DonationsFinder.new(params, @event).find_all
   end
 
   # PATCH /update
