@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = EventsFinder.new(params).find_all
+    @events = EventsFinder.new(params).find_all.paginate(page: params[:page], per_page: 15)
     respond_to do |format|
       format.html
       format.js
@@ -25,7 +25,7 @@ class EventsController < ApplicationController
 
   def show
     @event = find_event(params[:id])
-    @donations = DonationsFinder.new(params, @event).find_all
+    @donations = DonationsFinder.new(params, @event).find_all.paginate(page: params[:page], per_page: 15)
   end
 
   # PATCH /update
