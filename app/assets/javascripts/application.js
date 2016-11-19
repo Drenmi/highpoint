@@ -36,6 +36,14 @@ $( document ).ready(function() {
   $('.modal').on('show.bs.modal', function (e) {
     $("div.errors").html("");
   });
+
+  $('#report-year').change(function() {
+    if (!$(this).val()) {
+      $("#report-month").attr("disabled", "disabled");
+    } else {
+      $("#report-month").removeAttr("disabled");
+    }
+  });
 });
 
 function check(input) {
