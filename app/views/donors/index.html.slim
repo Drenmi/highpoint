@@ -37,3 +37,7 @@
             td = donor.name
             td = link_to donor.identification, donor_path(donor)
             td $#{number_with_delimiter(donor.total_donations(params[:cause_id]), delimiter: ",")}
+
+.page-links-centered
+  .row
+    = will_paginate @donors

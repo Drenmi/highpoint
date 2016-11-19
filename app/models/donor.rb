@@ -1,4 +1,6 @@
 class Donor < ActiveRecord::Base
+  self.per_page = 15
+
   default_scope { order(created_at: :desc) }
 
   has_many :donations, inverse_of: :donor
