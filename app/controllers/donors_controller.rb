@@ -6,7 +6,7 @@ class DonorsController < ApplicationController
 
   # GET /donors
   def index
-    @donors = DonorsFinder.new(params).find_all.paginate(page: params[:page])
+    @donors = DonorsFinder.new(params).find_all.paginate(page: params[:page], per_page: 15)
   end
 
   def update

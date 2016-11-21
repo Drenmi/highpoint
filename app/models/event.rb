@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   has_paper_trail
+  self.per_page = 15
 
   has_many :donations, inverse_of: :event
 

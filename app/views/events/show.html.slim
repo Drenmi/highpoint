@@ -41,3 +41,7 @@
             td = donation.donor.name
             td = l donation.created_at.to_date
             td $#{number_with_delimiter(donation.amount.round, delimiter: ",")}
+
+.page-links-centered
+  .row
+    = will_paginate @donations
