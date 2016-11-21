@@ -11,8 +11,8 @@
         .card-header = cause.name
         .card-block
           h4.card-title Top Donor:
-          p #{cause.top_donation_for_year.donor.name}
-          p $#{cause.top_donation_for_year.amount.round}
+          p #{cause.top_donation_for_year&.donor&.name}
+          p $#{cause.top_donation_for_year&.amount&.round}
 
 
 
