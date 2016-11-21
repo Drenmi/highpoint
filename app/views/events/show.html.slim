@@ -32,6 +32,7 @@
           th 
             | Donation
             = sortable :amount
+          th
       tbody
         tr
           - if @donations.blank? && params[:search].present?
@@ -41,6 +42,11 @@
             td = donation.donor.name
             td = l donation.created_at.to_date
             td $#{number_with_delimiter(donation.amount.round, delimiter: ",")}
+            td 
+              = link_to edit_donation_path(donation), remote: true do
+                i.fa.fa-pencil.fa-lg
+
+.modal.fade#editDonation role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 
 .page-links-centered
   .row
