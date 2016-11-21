@@ -1,6 +1,9 @@
 - flash.each do |key, value|
-  .alert.alert-danger.text-xs-center
-    = value
+    - if key == "notice"
+        div class=("alert alert-danger") = value
+    - else
+      div class=("alert alert-#{key}") = value
+    
 .container-fluid
   .row.margin-top
     .col-sm-4.offset-sm-4

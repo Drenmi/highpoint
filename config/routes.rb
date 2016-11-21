@@ -8,4 +8,12 @@ Rails.application.routes.draw do
   resources :donors, only: [:index, :show, :update, :edit]
   resources :events, only: [:create, :index, :show, :update, :edit]
   resources :users, only: [:create, :show]
+
+  resource :passwords do
+    member do
+      get :custom_edit
+      patch :custom_update
+      put :custom_update
+    end
+  end
 end
