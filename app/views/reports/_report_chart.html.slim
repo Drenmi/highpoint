@@ -4,11 +4,13 @@
   .col-xs-6.col-md-3
     <b>Month:</b> #{report.month.presence || "All" }
   .col-xs-6.col-md-3
-    <b>Cause:</b> #{!report.cause_id.empty? ? Cause.where("ID = ?", report.cause_id).first.name  : "All"}
+    <b>Cause:</b> #{report.cause&.name || "All"}
   .col-xs-6.col-md-3
-    <b>Event:</b> #{!report.event_id.empty? ? Event.where("ID = ?", report.event_id).first.name  : "All"}
+    <b>Event:</b> #{report.event&.name || "All"}
 
 
 .row.margin-top
-  = display_chart(report)
-
+  - if !report.cause_id.empty? || !report.event_id.empty?
+    = area_chart report.donations.group_by_week("donations.created_at").sum(:amount)
+  - else
+    = pie_chart report.donations.group("causes.name").sum(:amount)
