@@ -1,6 +1,6 @@
 class Donation < ActiveRecord::Base
   self.per_page = 15
-  
+
   belongs_to :donor, inverse_of: :donations
   belongs_to :cause, inverse_of: :donations
   belongs_to :event, inverse_of: :donations

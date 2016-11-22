@@ -18,14 +18,11 @@
                 .col-xs-6.col-sm-6.col-md-4
                   = select_tag :cause_id, options_from_collection_for_select(Cause.all, :id, :name, params[:cause_id]), prompt: "Filter by cause:", class: 'form-control', onchange: "cause_toggle(this.value)"
         tr
-          th 
-            | Name
+          th Name
             = sortable :name
-          th 
-            | NRIC/UEN
+          th NRIC/UEN
             = sortable :identification
-          th
-            | Total Donations
+          th Total Donations
             = sortable :total_donations
           th
       tbody

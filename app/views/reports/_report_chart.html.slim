@@ -10,6 +10,8 @@
 
 
 .row.margin-top
+  .col-xs-12.text-xs-center
+      h5 Total Donations: $#{report.donations.sum(:amount).round}
   - if !report.cause_id.empty? || !report.event_id.empty?
     = area_chart report.donations.group_by_week("donations.created_at").sum(:amount)
   - else
