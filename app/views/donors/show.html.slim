@@ -8,10 +8,15 @@
 #show_partial
   = render "show"
 
-div
-  h2 Total Amount Donated
-  h1 $#{number_with_delimiter(@donor.total_donations(params[:cause_id]), delimiter: ",")}
-  h5 Donor since #{@donor.created_at.strftime("%d %b %Y")} (#{time_ago_in_words(@donor.created_at)})
+h6 Donor since #{@donor.created_at.strftime("%d %b %Y")} (#{time_ago_in_words(@donor.created_at)})
+p.metadata = whodunnit(@donor)
+.card.card-inverse.card-info.text-xs-center
+  .card-block
+    h1 Total amount donated
+    h1 $#{number_with_delimiter(@donor.total_donations(params[:cause_id]), delimiter: ",")}
+
+
+
 .table-responsive
   table.table
     thead.thead-default
