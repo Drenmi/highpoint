@@ -7,8 +7,9 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.js { flash.now[:notice] = "Event was successfully created." }
-        format.html { redirect_to events_path }
+        format.js {}
+        format.html {}
+        redirect_to events_path, notice: "Event was successfully created."
       else
         format.js
       end
