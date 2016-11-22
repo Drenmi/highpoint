@@ -16,14 +16,11 @@
                     span.input-group-btn
                       = submit_tag "Search", name: :nil, class: "btn btn-secondary"
         tr.thead-default
-          th
-            | Name
+          th Name
             = sortable :name
-          th
-            | Date
+          th Date
             = sortable :start_on
-          th
-            | Total Donations
+          th Total Donations
             = sortable :total_donations
           th
       tbody.events-index
