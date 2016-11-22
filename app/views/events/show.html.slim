@@ -23,12 +23,9 @@
                     span.input-group-btn
                       = submit_tag "Search", name: :nil, class: "btn btn-secondary"
         tr
-          th Name
-            = sortable :donor_name
-          th Date
-            = sortable :created_at
-          th Donation
-            = sortable :amount
+          th Name #{sortable :donor_name}
+          th Date #{sortable :created_at}
+          th Donation #{sortable :amount}
           th
       tbody
         tr
