@@ -6,11 +6,11 @@
         = form_tag(url: reports_path, method: :post)
           .form-group.col-xs-6
             label.form-control-label for="year" Year:
-            = select_year(@report.present? ?  @report.year.to_i : Date.today , { start_year: Donation.minimum(:created_at).year, end_year: Date.current.year,  prompt: 'All'}, {class:"form-control"})
+            = select_year(@report.present? ?  @report.year.to_i : Date.today , { start_year: Donation.minimum(:created_at).year, end_year: Date.current.year,  prompt: "All"}, {class:"form-control", id: "report-year"})
 
           .form-group.col-xs-6
             label.form-control-label for="month" Month:
-            = select_month(@report.present? ? @report.month.to_i : Date.today, {prompt: 'All'}, {class:"form-control"} )
+            = select_month(@report.present? ? @report.month.to_i : Date.today, {prompt: "All"}, {class: "form-control", id: "report-month"} )
 
           .form-group.col-xs-6
             label.form-control-label for="cause" Cause:
