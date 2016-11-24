@@ -1,19 +1,22 @@
 .navbar.navbar-light.navbar-static-top
-  .collapse.navbar-toggleable-xs#exCollapsingNavbar2
+  button.navbar-toggler.hidden-sm-up type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+  .collapse.navbar-toggleable-xs#navbarResponsive
     = link_to "HCSA Admin", donations_path, class: "navbar-brand"
     ul.nav.navbar-nav
       li.nav-item = link_to "Donors", donors_path, class: "nav-link"
       li.nav-item = link_to "Events", events_path, class: "nav-link"
       li.nav-item = link_to "Reports", reports_path, class: "nav-link"
-      li.nav-item.pull-sm-right
-        .btn-group
-          button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            = current_user.email
-            span.caret
-          .dropdown-menu.dropdown-menu-right
-            button.dropdown-item type="button" = link_to "My Profile", user_path(current_user)
-            button.dropdown-item type="button" = link_to "Sign out", sign_out_path, method: :delete
-      li.nav-item.pull-sm-right
-        button.btn.btn-primary type="button" data-toggle="modal" data-target="#donationModal"
-          i.fa.fa-plus aria-hidden="true"
-          |  New donation
+      .float-sm-right
+        li.nav-item
+          button.btn.btn-primary type="button" data-toggle="modal" data-target="#donationModal"
+            i.fa.fa-plus aria-hidden="true"
+            |  New donation
+        li.nav-item
+          .btn-group
+            button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              = current_user.email
+              span.caret
+            .dropdown-menu.dropdown-menu-right
+              button.dropdown-item type="button" = link_to "My Profile", user_path(current_user)
+              button.dropdown-item type="button" = link_to "Sign out", sign_out_path, method: :delete
+

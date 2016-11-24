@@ -17,16 +17,23 @@
  @import "bootstrap-datepicker";
  @import "font-awesome";
 
- table .input-group {
-   border-collapse: collapse;
- }
-
  .margin-top {
    margin-top: 3rem;
  }
 
- th a.sort-icon {
-   margin-left: 5px;
+ .metadata {
+   color: rgba(0,0,0,0.5);
+   margin-top: -0.6rem;
+   font-size: 0.9rem;
+   font-style: italic;
+ }
+
+ table {
+   .input-group {
+     border-collapse: collapse;
+   }
+   th a.sort-icon {
+     margin-left: 5px;
      &:focus,
      &:hover,
      &:active {
@@ -38,15 +45,12 @@
      &.sort-icon-up {
        vertical-align: 0px;
      }
+   }
+ }
+
+ @media only screen and (max-width: 767px ) {
+   .margin-sm-top {
+     margin-top: 1rem;
+   }
   }
 
- .page-links-centered {
-   text-align: center;
- }
-
- .metadata {
-   color: rgba(0,0,0,0.5);
-   margin-top: -0.6rem;
-   font-size: 0.9rem;
-   font-style: italic;
- }

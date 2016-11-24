@@ -14,10 +14,10 @@
     table.table
       thead.thead-default
         tr
-          td colspan="3"
+          td colspan="4"
             .container-fluid
               .row
-                .col-xs-12.col-sm-6.offset-sm-6.col-md-4.offset-md-8
+                .col-xs-12.col-md-6.offset-md-6
                   div.input-group
                     = text_field_tag :search, params[:search], placeholder: "Search by donor name ...", class: "form-control"
                     span.input-group-btn
@@ -42,6 +42,6 @@
 
 .modal.fade#editDonation role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 
-.page-links-centered
+.text-xs-center
   .row
     = will_paginate @donations
