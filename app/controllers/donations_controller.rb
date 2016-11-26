@@ -3,12 +3,14 @@ class DonationsController < ApplicationController
   def create
     donor = find_or_build_donor(donation_params.delete(:donor))
     @donation = Donation.new(donation_params.merge(donor: donor))
-
+    @donor_new_record = @donation.donor.new_record?
     respond_to do |format|
       if @donation.save
         format.js {}
         format.html {}
-        redirect_to donor_path(@donation.donor), notice: "Donation was successfully created."
+        redirect_to donor_path(@donation.donor)
+        flash[:success] = "Donation was successfully created."
+        flash[:warning] = "New donor created. Fill in donor details below." if @donor_new_record
       else
         format.js
       end
