@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  add_flash_types :warning, :error, :success
+
   include Clearance::Controller
 
   protect_from_forgery with: :exception

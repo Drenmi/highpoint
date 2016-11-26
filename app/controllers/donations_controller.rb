@@ -30,7 +30,7 @@ class DonationsController < ApplicationController
       if @donation.update(donation_params)
         format.js {}
         format.html {}
-        redirect_to donor_path(@donation.donor), notice: "Donation was successfully updated."
+        redirect_to donor_path(@donation.donor), success: "Donation was successfully updated."
       else
         format.js
       end
