@@ -6,11 +6,11 @@
         = form_tag(url: reports_path, method: :post)
           .form-group.col-xs-6
             label.form-control-label for="year" Year:
-            = select_year(@report.present? ?  @report.year.to_i : Date.today , { start_year: Donation.minimum(:created_at).year, end_year: Date.current.year,  prompt: "All"}, {class:"form-control", id: "report-year"})
+            = select_year(@report.present? ?  @report.year.to_i : 0 , { prompt: 'All', start_year: Donation.order("created_at ASC").first.created_at.year, end_year: Date.current.year}, {class:"form-control", id: "report-year"})
 
           .form-group.col-xs-6
             label.form-control-label for="month" Month:
-            = select_month(@report.present? ? @report.month.to_i : Date.today, {prompt: "All"}, {class: "form-control", id: "report-month"} )
+            = select_month(@report.present? ? @report.month.to_i : 0, {prompt: "All"}, {class: "form-control", id: "report-month"} )
 
           .form-group.col-xs-6
             label.form-control-label for="cause" Cause:
@@ -21,7 +21,7 @@
             = select_tag "event_id", options_from_collection_for_select(Event.all, "id", "name", params[:event_id]), prompt: 'All', class:"form-control"
 
           .actions
-            = submit_tag "Get Report", class: "btn btn-primary form-control"
+            = submit_tag "Get Report", class: "btn btn-primary form-control", id: "generateReportButton"
 
 - if @report.present?
   = render "report_chart", report: @report

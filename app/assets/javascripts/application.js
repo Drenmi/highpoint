@@ -32,7 +32,7 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-$( document ).ready(function() {
+$(document).ready(function() {
   $('.modal').on('show.bs.modal', function (e) {
     $("div.errors").html("");
   });
