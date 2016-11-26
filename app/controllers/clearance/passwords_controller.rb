@@ -90,7 +90,7 @@ class Clearance::PasswordsController < Clearance::BaseController
 
   def find_user_for_create
     Clearance.configuration.user_model
-             .find_by_normalized_email: params[:password][:email]
+             .find_by_normalized_email(params[:password][:email])
   end
 
   def find_user_for_edit
