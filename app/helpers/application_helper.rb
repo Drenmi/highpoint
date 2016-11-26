@@ -19,4 +19,14 @@ module ApplicationHelper
       end
     link_to "", safe_params(sort: column.to_s, direction: direction), class: css_class
   end
+
+  def whodunnit(object)
+    if object.versions.last&.event == "update"
+      "Last updated on #{l object.versions.last.created_at.localtime} by #{User.where('id = ?', object.versions.last.whodunnit).first.email}"
+    elsif object.versions.last&.event == "create"
+      "Created on #{l object.created_at.localtime} by #{User.where('id = ?', object.versions.last&.whodunnit).first.email}"
+    else
+      "Created on #{l object.created_at.localtime}"
+    end
+  end
 end

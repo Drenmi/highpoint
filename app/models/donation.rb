@@ -1,4 +1,5 @@
 class Donation < ActiveRecord::Base
+  has_paper_trail
   self.per_page = 15
 
   belongs_to :donor, inverse_of: :donations
