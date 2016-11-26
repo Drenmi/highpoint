@@ -9,7 +9,7 @@ class DonationsReportsFinder
 
   def filter
     filter_by_year(@year) if @year.present?
-    filter_by_month(@year, @month) if @month.present?
+    filter_by_month(@year, @month) if @month.present? && @year.present?
     filter_by_cause(@cause_id) if @cause_id.present?
     filter_by_event(@event_id) if @event_id.present?
     @result
