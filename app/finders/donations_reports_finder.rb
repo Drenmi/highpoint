@@ -26,10 +26,10 @@ class DonationsReportsFinder
   end
 
   def filter_by_cause(cause_id)
-    @result = @result.where("causes.id = ?", cause_id)
+    @result = @result.joins(:cause).where("causes.id = ?", cause_id)
   end
 
   def filter_by_event(event_id)
-    @result = @result.includes(:event).where("events.id = ?", event_id)
+    @result = @result.joins(:event).includes(:event).where("events.id = ?", event_id)
   end
 end
