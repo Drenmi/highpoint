@@ -1,44 +1,49 @@
 require "rails_helper"
 
-RSpec.describe DonationsReportsFinder, type: :finder do
-  subject(:finder) { described_class.new(params) }
+RSpec.describe DonationsFinder, type: :finder do
+  subject(:finder) { described_class.new(params, event) }
 
   before do
-    @donation_with_year = create(:donation, created_at: 2.years.ago)
-    @donation_with_month = create(:donation, created_at: 2.months.ago)
-    @donation_with_cause = create(:donation_with_cause)
-    @donation_with_event = create(:donation_with_event)
+    @event = create(:event, id: 1)
+    @donation_one = create(:donation, amount: 200, created_at: "2015-11-21 00:00:00", donor: create(:donor, name: "Bob Smith"), event: @event)
+    @donation_two = create(:donation, amount: 100, created_at: "2016-11-21 00:00:00", donor: create(:donor, name: "Anonymous"), event: @event)
+    @donation_three = create(:donation, amount: 300, created_at: "2017-11-21 00:00:00", donor: create(:donor, name: "John Smith"), event: @event)
   end
 
-  describe "#filter" do
+  describe "#find_all" do
     context "when no params are passed" do
       let(:params) { {} }
+      let(:event) { @event }
 
-      it { expect(finder.filter.to_a).to eq [@donation_with_year, @donation_with_month, @donation_with_cause, @donation_with_event] }
+      it { expect(finder.find_all.to_a).to eq [@donation_three, @donation_two, @donation_one] }
     end
 
-    context "when year is passed" do
-      let(:params) { { date: { year: 2.years.ago.year } } }
+    context "when sort_direction is passed" do
+      let(:params) { { direction: "ASC" } }
+      let(:event) { @event }
 
-      it { expect(finder.filter.to_a).to eq [@donation_with_year] }
+      it { expect(finder.find_all.to_a).to eq [@donation_one, @donation_two, @donation_three] }
     end
 
-    context "when month and year are passed" do
-      let(:params) { { date: { year: 2.months.ago.year, month: 2.months.ago.month } } }
+    context "when sort_column is passed" do
+      let(:params) { { sort: "amount", direction: "ASC" } }
+      let(:event) { @event }
 
-      it { expect(finder.filter.to_a).to eq [@donation_with_month] }
+      it { expect(finder.find_all.to_a).to eq [@donation_two, @donation_one, @donation_three] }
     end
 
-    context "when cause_id is passed" do
-      let(:params) { { cause_id: @donation_with_cause.cause.id } }
+    context "when keyword is passed" do
+      let(:params) { { search: "Smith" } }
+      let(:event) { @event }
 
-      it { expect(finder.filter.references(:cause).to_a).to eq [@donation_with_cause] }
+      it { expect(finder.find_all.to_a).to eq [@donation_three, @donation_one] }
     end
 
-    context "when event_id is passed" do
-      let(:params) { { event_id: @donation_with_event.event.id } }
+    context "when sort and keyword are passed" do
+      let(:params) { { sort: "donor_name", direction: "ASC", search: "smi" } }
+      let(:event) { @event }
 
-      it { expect(finder.filter.references(:cause).to_a).to eq [@donation_with_event] }
+      it { expect(finder.find_all.to_a).to eq [@donation_one, @donation_three] }
     end
   end
 end
