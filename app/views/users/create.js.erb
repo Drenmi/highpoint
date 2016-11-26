@@ -1,0 +1,8 @@
+$("div.errors").html("")
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    $("div.errors").append($("<div />").html("<%= message.html_safe %>").addClass("alert alert-danger"))
+  <% end %>
+<% else %>
+  $("#userModal").modal("hide")
+<% end %>

@@ -1,0 +1,12 @@
+.errors
+
+.form-group
+  = f.label :email, class: "control-label"
+  = f.email_field :email, class: "form-control", value: "New email"
+
+.form-group
+  = f.label :password, class: "control-label"
+  = f.password_field :password, class: "form-control"
+
+.actions
+  = f.submit "Save changes", class: "btn btn-primary form-control"
