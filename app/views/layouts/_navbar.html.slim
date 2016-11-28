@@ -18,5 +18,5 @@
               span.caret
             .dropdown-menu.dropdown-menu-right
               button.dropdown-item type="button" = link_to "My Profile", user_path(current_user)
+              button.dropdown-item type="button" = link_to "Change password", custom_edit_passwords_path(@user)
               button.dropdown-item type="button" = link_to "Sign out", sign_out_path, method: :delete
-
