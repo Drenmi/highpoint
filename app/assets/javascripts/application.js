@@ -40,6 +40,7 @@ $(document).ready(function() {
   $('#report-year').change(function() {
     if (!$(this).val()) {
       $("#report-month").attr("disabled", "disabled");
+      $("#report-month").val("");
     } else {
       $("#report-month").removeAttr("disabled");
     }

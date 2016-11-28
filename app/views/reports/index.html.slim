@@ -10,7 +10,7 @@
 
           .form-group.col-xs-6
             label.form-control-label for="month" Month:
-            = select_month(@report.present? ? @report.month.to_i : 0, {prompt: "All"}, {class: "form-control", id: "report-month"} )
+            = select_month(@report.present? ? @report.month.to_i : 0, {prompt: "All", disabled: true}, {class: "form-control", id: "report-month"} )
 
           .form-group.col-xs-6
             label.form-control-label for="cause" Cause:
