@@ -55,6 +55,11 @@ $(document).ready(function() {
       $("#report-month").removeAttr("disabled");
     }
   });
+
+  $(".sort_paginate_ajax th a, .sort_paginate_ajax .pagination a").on("click", function(){
+    $.getScript(this.href);
+    return false;
+  });
 });
 
 function check(input) {
@@ -64,10 +69,3 @@ function check(input) {
     input.setCustomValidity('');
   }
 }
-
-$(function() {
-  $(".sort_paginate_ajax th a, .sort_paginate_ajax .pagination a").on("click", function(){
-    $.getScript(this.href);
-    return false;
-  });
-});

@@ -1,15 +1,13 @@
-.row.col-xs-12.col-md-10.offset-md-1.text-xs-center
+col-xs-12.col-md-10.offset-md-1.text-xs-center
   .col-xs-6.col-md-3
-    <b>Year:</b> #{report.year.presence || "All"}
+    p <b>Year:</b> #{report.year.presence || "All"}
   .col-xs-6.col-md-3
-    <b>Month:</b> #{Date::MONTHNAMES[report.month.to_i].presence || "All" }
+    p <b>Month:</b> #{Date::MONTHNAMES[report.month.to_i].presence || "All" }
   .col-xs-6.col-md-3
-    <b>Cause:</b> #{report.cause&.name || "All"}
+    p <b>Cause:</b> #{report.cause&.name || "All"}
   .col-xs-6.col-md-3
-    <b>Event:</b> #{report.event&.name || "All"}
+    p <b>Event:</b> #{report.event&.name || "All"}
 
-
-.row.margin-top
   .col-xs-12.text-xs-center
       h5 Total Donations: $#{report.donations.sum(:amount).round}
   - if !report.cause_id.empty? || !report.event_id.empty?

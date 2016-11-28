@@ -1,17 +1,25 @@
-.row
-  .col-xs-6
-    p Name
-    p = @donor.name
+.col-xs-12
+  .card
+    .card-block
+      .card-text
+        .row
+          .col-xs-12
+            .float-sm-right
+              = link_to edit_donor_url, remote: true do
+                i class="fa fa-pencil fa-lg"
 
-    p NRIC/UEN
-    p = @donor.identification
+          .col-xs-12.col-md-6
+            h2 #{@donor&.title} #{@donor.name}
 
-  .col-xs-6
-    p Contact
-    p = @donor.phone_number
+            p <b>NRIC/UEN:</b> #{@donor.identification}
+            p <b>Contact no:</b> #{@donor.phone_number}
+            p <b>Email:</b> #{@donor.email_address}
 
-    p Email
-    p = @donor.email_address
+          .col-xs-6.col-md-6
+            p <b>Address:</b> #{@donor.address} #{@donor.postal_code}
+            p.comments = @donor.comments
 
-    p Address
-    p = @donor.address
+        .row
+          .col-xs-12
+            h6.metadata Donor since #{@donor.created_at.strftime("%d %b %Y")} (#{time_ago_in_words(@donor.created_at)})
+            p.metadata.neg-margin-top <i>#{whodunnit(@donor)}</i>

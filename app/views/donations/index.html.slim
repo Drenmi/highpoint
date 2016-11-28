@@ -1,9 +1,10 @@
 .row
-  .card.card-inverse.card-info.text-xs-center
-    .card-block
-      h1 Total Donations for #{Date.current.year}
-      h1 $#{@donations.donations_for_year(Date.current.year).sum(:amount).round}
-  = area_chart @donations.includes(:cause).where("donations.created_at BETWEEN ? AND ?", Date.current.beginning_of_year, Date.current.end_of_year).group("causes.name").group_by_week("donations.created_at").sum(:amount)
+  .col-xs-12
+    .card.card-inverse.card-info.text-xs-center
+      .card-block
+        h1 Total Donations for #{Date.current.year}
+        h1 $#{@donations.donations_for_year(Date.current.year).sum(:amount).round}
+    = area_chart @donations.includes(:cause).where("donations.created_at BETWEEN ? AND ?", Date.current.beginning_of_year, Date.current.end_of_year).group("causes.name").group_by_week("donations.created_at").sum(:amount)
 
 .row.margin-top
   - @causes.each do |cause|

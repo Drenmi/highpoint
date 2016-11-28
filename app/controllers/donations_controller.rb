@@ -8,7 +8,7 @@ class DonationsController < ApplicationController
       if @donation.save
         format.js {}
         format.html {}
-        redirect_to donor_path(@donation.donor)
+        redirect_to donor_path(@donation.donor, new_donation: "true")
         flash[:success] = "Donation was successfully created."
         flash[:warning] = "New donor created. Fill in donor details below." if @donor_new_record
       else
