@@ -9,5 +9,9 @@
           = f.fields_for :donor, @modal_donation.donor do |donor|
             .form-group
               label.form-control-label for="donorDocs" Donor NRIC/UEN
-              = donor.text_field :identification, class: "form-control", placeholder: "Enter 'Anonymous' if unknown"
-          = render "donations/form", f: f
+              = donor.text_field :identification, class: "form-control", placeholder: "Click 'Anonymous' if unknown"
+            .form-check
+              = check_box_tag "Anonymous", true, false, class: "checkbox", id: "anonymous"
+              = label_tag :anonymous, "Anonymous", class: "form-check-label"
+
+            = render "donations/form", f: f

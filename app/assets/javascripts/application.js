@@ -30,6 +30,16 @@ $(document).on('turbolinks:load', function() {
     autoclose: true,
     todayHighlight: true
   });
+
+  $("input#anonymous").click(function() {
+    if ($("#donation_donor_identification").val() === "") {
+      $("#donation_donor_identification").val("Anonymous");
+      $("#donation_donor_identification").attr("readonly", "true");
+    } else {
+      $("#donation_donor_identification").val("");
+      $("#donation_donor_identification").removeAttr("readonly");
+    }
+  });
 });
 
 $(document).ready(function() {
