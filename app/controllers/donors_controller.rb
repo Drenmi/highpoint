@@ -7,6 +7,11 @@ class DonorsController < ApplicationController
   # GET /donors
   def index
     @donors = DonorsFinder.new(params).find_all.paginate(page: params[:page], per_page: 15)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @donors.to_csv, filename: "donors-#{l Date.today, format: :filename}.csv" }
+    end
   end
 
   def update

@@ -18,4 +18,13 @@ class Donor < ActiveRecord::Base
       donations.sum(:amount).round
     end
   end
+
+  def self.to_csv
+    CSV.generate(headers: true) do |csv|
+      csv << column_names
+      all.each do |donor|
+        csv << donor.attributes.values_at(*column_names)
+      end
+    end
+  end
 end

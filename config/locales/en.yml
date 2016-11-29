@@ -24,6 +24,7 @@ en:
     formats:
       default: "%d %b, %Y"
       short: "%d %b"
+      filename: "%d-%b-%Y"
   time:
     formats:
       default: "%d %b, %Y at %I:%M%p"
