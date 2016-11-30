@@ -1,6 +1,6 @@
 .row
   .col-xs-12
-    .card.card-inverse.card-info.text-xs-center
+    .card.card-inverse.text-xs-center
       .card-block
         h1 Total Donations for #{Date.current.year}
         h1 $#{@donations.donations_for_year(Date.current.year).sum(:amount).round}
@@ -9,16 +9,9 @@
 .row.margin-top
   - @causes.each do |cause|
     .col-sm-6.col-lg-3
-      .card.card-outline-primary.text-xs-center
+      .card.text-xs-center
         .card-header = cause.name
         .card-block
           h4.card-title Top Donor:
           p #{cause.top_donation_for_year&.donor&.name}
           p $#{cause.top_donation_for_year&.amount&.round}
-
-
-
-
-
-
-
