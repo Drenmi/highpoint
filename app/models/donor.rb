@@ -3,6 +3,8 @@ class Donor < ActiveRecord::Base
 
   self.per_page = 15
 
+  before_create :set_name
+
   default_scope { order(created_at: :desc) }
 
   has_many :donations, inverse_of: :donor
@@ -26,5 +28,9 @@ class Donor < ActiveRecord::Base
         csv << donor.attributes.values_at(*column_names)
       end
     end
+  end
+
+  def set_name
+    self.name = "" if name.blank?
   end
 end

@@ -25,9 +25,16 @@
                   .row
                     .col-xs-12.col-md-6.offset-md-6
                       div.input-group
-                        = text_field_tag :search, params[:search], placeholder: "Search by donor name ...", class: "form-control"
+                        = text_field_tag :search, nil, placeholder: "Search by donor name ...", class: "form-control"
                         span.input-group-btn
                           = submit_tag "Search", name: :nil, class: "btn btn-secondary"
+
+                    .col-xs-12.col-md-6.offset-md-6
+                      h1
+                      -if @search.present?
+                        button.btn.btn-sm.btn-primary type="submit" name= "search" value= nil
+                          | #{@search}
+                          i.fa.fa-close aria-hidden="true"
             tr
               th Name #{sortable :donor_name}
               th Date #{sortable :created_at}
