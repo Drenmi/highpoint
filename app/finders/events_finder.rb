@@ -1,6 +1,6 @@
 class EventsFinder
   def initialize(params)
-    @sort_column = params[:sort] || "start_on"
+    @sort_column = params[:sort] || "updated_at"
     @sort_direction = params[:direction] || "DESC"
     @keyword = params[:search]
     @result = Event.unscoped
