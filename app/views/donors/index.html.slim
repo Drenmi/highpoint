@@ -10,18 +10,19 @@
           td colspan="3"
             .container-fluid
               .row
-                .col-xs-12.col-md-6.col-lg-8
+                .col-xs-12.col-md-5.col-lg-6
                   .input-group
                     = text_field_tag :search, params[:search], placeholder: "Search by donor name or NRIC/UEN ...", class: "form-control"
                     span.input-group-btn
                       = submit_tag "Search", name: :nil, class: "btn btn-secondary"
-                .col-xs-12.col-md-6.col-lg-4.margin-sm-top
+                .col-xs-12.col-md-5.col-lg-4.margin-sm-top
                   = select_tag :cause_id, options_from_collection_for_select(Cause.all, :id, :name, params[:cause_id]), prompt: "Filter by cause:", class: 'form-control', onchange: "cause_toggle(this.value)"
+                .col-xs-12.col-md-2.col-lg-2.margin-sm-top
+                  = link_to "Export", request.params.merge(format: "csv"), class: "btn btn-success"
         tr
           th Name #{sortable :name}
           th NRIC/UEN #{sortable :identification}
           th Total Donations #{sortable :total_donations}
-          th
       tbody
         tr
           - if @donors.blank? && params[:search].present?
