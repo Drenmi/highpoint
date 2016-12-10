@@ -1,44 +1,46 @@
 - flash.each do |key, value|
     div class=("alert alert-#{key}") = value
+.row
+  #edit_partial
 
-#edit_partial
-  = link_to edit_donor_url, remote: true do
-    i class="fa fa-pencil fa-lg"
+- if @new_donation == "true"
+  .row
+    = render "edit"
+- else
+  .row
+    #show_partial
+      = render "show"
 
-#show_partial
-  = render "show"
-
-h6 Donor since #{@donor.created_at.strftime("%d %b %Y")} (#{time_ago_in_words(@donor.created_at)})
-p.metadata = whodunnit(@donor)
-.card.card-inverse.card-info.text-xs-center
-  .card-block
-    h1 Total amount donated
-    h1 $#{number_with_delimiter(@donor.total_donations(params[:cause_id]), delimiter: ",")}
+.row
+  .col-xs-12
+    .card.card-inverse.card-info.text-xs-center
+      .card-block
+        h1 Total amount donated
+        h1 $#{number_with_delimiter(@donor.total_donations(params[:cause_id]), delimiter: ",")}
 
 
-
-.table-responsive
-  table.table
-    thead.thead-default
-      tr
-        th Donated on
-        th Amount
-        th Cause
-        th Event
-        th
-    tbody
-
-      - if @donor.donations.present?
-        - @donor.donations.each do |donation|
-         tr
-            td = l donation.created_at.to_date, format: donation.created_at.year == Date.today.year ? :short : :default
-            td $#{donation.amount.to_i}
-            td = donation.cause&.name
-            td
-              -if donation.event.present?
-                = link_to donation.event.name, event_path(donation.event)
-            td
-              = link_to edit_donation_path(donation), remote: true do
-                i.fa.fa-pencil.fa-lg
+.row
+  .col-xs-12
+    .table-responsive
+      table.table
+        thead.thead-default
+          tr
+            th Donated on
+            th Amount
+            th Cause
+            th Event
+            th
+        tbody
+          - @donor.donations.each do |donation|
+           tr
+              td = l donation.created_at.to_date, format: donation.created_at.year == Date.today.year ? :short : :default
+              td $#{donation.amount.to_i}
+              td = donation.cause&.name
+              td
+                - if donation.event.present?
+                  = link_to donation.event.name, event_path(donation.event)
+              td
+                = link_to edit_donation_path(donation), remote: true do
+                  i.fa.fa-pencil.fa-lg
 
 .modal.fade#editDonation role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"

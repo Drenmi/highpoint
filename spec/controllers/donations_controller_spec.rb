@@ -18,7 +18,7 @@ RSpec.describe DonationsController, type: :controller do
     context "when donation is saved successfully" do
       let(:save_result) { true }
 
-      it { expect(response).to redirect_to(donor_path(donation.donor)) }
+      it { expect(response).to redirect_to(donor_path(donation.donor) + "?new_donation=true") }
     end
 
     context "when donation is not saved successfully" do

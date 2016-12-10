@@ -2,6 +2,7 @@ class DonorsController < ApplicationController
   # GET donors/:id
   def show
     @donor = find_donor(params[:id])
+    @new_donation = params[:new_donation] || "false"
   end
 
   # GET /donors
@@ -38,6 +39,6 @@ class DonorsController < ApplicationController
   end
 
   def donor_params
-    params.require(:donor).permit(:name, :phone_number, :email_address, :address)
+    params.require(:donor).permit(:title, :name, :address, :postal_code, :phone_number, :email_address, :comments)
   end
 end

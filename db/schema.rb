@@ -38,10 +38,13 @@ ActiveRecord::Schema.define(version: 20161116012055) do
 
   create_table "donors", force: :cascade do |t|
     t.string   "identification", null: false
+    t.string   "title"
     t.string   "name"
     t.text     "address"
+    t.string   "postal_code"
     t.string   "phone_number"
     t.string   "email_address"
+    t.text     "comments"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
