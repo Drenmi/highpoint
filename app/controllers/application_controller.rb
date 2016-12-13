@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  add_flash_types :warning, :error, :success
+  add_flash_types :warning, :danger, :success
 
   include Clearance::Controller
 

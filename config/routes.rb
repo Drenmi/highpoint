@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   resources :donors, only: [:index, :show, :update, :edit]
   resources :events, only: [:create, :index, :show, :update, :edit]
-  resources :users, only: [:create, :show]
+  resources :users, only: [:create, :index, :show, :destroy]
 
   resource :passwords do
     member do

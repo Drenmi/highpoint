@@ -8,7 +8,7 @@ class Clearance::UsersController < Clearance::BaseController
       if @user.save
         format.js {}
         format.html {}
-        redirect_to :back, notice: "User was successfully created."
+        redirect_to :back, success: "User was successfully created."
       else
         format.js
       end
