@@ -36,8 +36,9 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to events_path }
-        format.js { flash.now[:notice] = "Event was successfully updated." }
+        format.js {}
+        format.html {}
+        redirect_to events_path, notice: "Event was successfully updated." 
       else
         format.js
       end
