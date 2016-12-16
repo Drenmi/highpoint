@@ -35,6 +35,6 @@ RSpec.describe Donor, type: :model do
       @donor3 = create(:donor, postal_code: "333444")
     end
 
-    it { expect(described_class.same_postcode("111222")).to match_array [@donor_1, @donor_2] }
+    it { expect(described_class.same_postcode("111222")).to match_array [@donor1, @donor2] }
   end
 end
