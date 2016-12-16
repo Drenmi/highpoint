@@ -8,6 +8,8 @@ FactoryGirl.define do
 
     name "Test"
 
+    postal_code "111222"
+
     trait :invalid do
       identification nil
     end

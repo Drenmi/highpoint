@@ -17,6 +17,16 @@
 
           .col-xs-6.col-md-6
             p <b>Address:</b> #{@donor.address} #{@donor.postal_code}
+            - if !@donor.postal_code&.empty? && Donor.same_postcode(@donor.postal_code).count > 1
+              p
+                | Shares postal code with
+                - Donor.same_postcode(@donor.postal_code).each do |d|
+                  - if d.name == @donor.name
+                    break
+                  - elsif Donor.same_postcode(@donor.postal_code).count > 2
+                    = link_to " #{d.name} |", donor_path(d)
+                  - else
+                    = link_to " #{d.name}", donor_path(d)
             p.comments = @donor.comments
 
         .row
