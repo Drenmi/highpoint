@@ -6,6 +6,7 @@ class Clearance::UsersController < Clearance::BaseController
 
     respond_to do |format|
       if @user.save
+        UserMailer.welcome_email(@user).deliver_later
         format.js {}
         format.html {}
         redirect_to :back, success: "User was successfully created."
