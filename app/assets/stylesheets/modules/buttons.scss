@@ -1,0 +1,14 @@
+.btn {
+  border-radius: 0px;
+  font-size: 14px;
+  &.btn-primary {
+    background-color: $background-orange;
+    border: none;
+    &:hover:active {
+      background-color: darken($background-orange, 10%);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}

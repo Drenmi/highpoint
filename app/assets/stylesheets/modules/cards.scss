@@ -1,0 +1,7 @@
+.card {
+  border-radius: 0px;
+  &.card-inverse {
+    border: none;
+    background-color: $background-ligt-grey;
+  }
+}

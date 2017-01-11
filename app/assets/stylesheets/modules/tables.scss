@@ -1,0 +1,19 @@
+table {
+  .input-group {
+    border-collapse: collapse;
+  }
+  th a.sort-icon {
+    margin-left: 5px;
+    &:focus,
+    &:hover,
+    &:active {
+      text-decoration: none;
+    }
+    &.sort-icon-down {
+      vertical-align: -25%;
+    }
+    &.sort-icon-up {
+      vertical-align: 0px;
+    }
+  }
+}
