@@ -13,7 +13,7 @@ class DonorsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @donors.to_csv, filename: "donors-#{l Date.today, format: :filename}.csv" }
+      format.csv { send_data @donors.to_csv, filename: "donors-#{l Date.current, format: :filename}.csv" }
     end
   end
 
