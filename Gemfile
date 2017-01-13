@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
-ruby "2.3.1"
+ruby "2.3.3"
 
-gem "rails", "~> 4.2.7.1"
+gem "rails", "~> 4.2"
 
 gem "pg", "~> 0.15"
 
@@ -10,7 +10,7 @@ gem "slim-rails"
 
 gem "sass-rails", "~> 5.0"
 gem "rails-assets-tether", "~> 1.1.0"
-gem "bootstrap", "~> 4.0.0.alpha5"
+gem "bootstrap", "4.0.0.alpha5"
 gem "font-awesome-rails"
 gem "bootstrap-datepicker-rails"
 
