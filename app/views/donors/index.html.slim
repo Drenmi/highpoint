@@ -12,13 +12,20 @@
               .row
                 .col-xs-12.col-md-5.col-lg-6
                   .input-group
-                    = text_field_tag :search, params[:search], placeholder: "Search by donor name or NRIC/UEN ...", class: "form-control"
+                    = text_field_tag :search, nil, placeholder: "Search by donor name or NRIC/UEN ...", class: "form-control"
                     span.input-group-btn
                       = submit_tag "Search", name: :nil, class: "btn btn-secondary"
                 .col-xs-12.col-md-5.col-lg-4.margin-sm-top
                   = select_tag :cause_id, options_from_collection_for_select(Cause.all, :id, :name, params[:cause_id]), prompt: "Filter by cause:", class: 'form-control', onchange: "cause_toggle(this.value)"
                 .col-xs-12.col-md-2.col-lg-2.margin-sm-top
                   = link_to "Export", request.params.merge(format: "csv"), class: "btn btn-success"
+              .row
+                .col-xs-12.col-md-6.col-lg-8
+                  h1
+                  -if @search.present?
+                    button.btn.btn-sm.btn-primary type="submit" name= "search" value= nil
+                      | #{@search}
+                      i.fa.fa-close aria-hidden="true"
         tr
           th Name #{sortable :name}
           th NRIC/UEN #{sortable :identification}
