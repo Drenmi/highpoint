@@ -21,7 +21,9 @@ class Clearance::PasswordsController < Clearance::BaseController
   end
 
   def create
-    if user = find_user_for_create
+    user = find_user_for_create
+
+    if user
       user.forgot_password!
       deliver_email(user)
       render template: "passwords/create"
@@ -89,8 +91,10 @@ class Clearance::PasswordsController < Clearance::BaseController
   end
 
   def find_user_for_create
+    # rubocop:disable Rails/DynamicFindBy
     Clearance.configuration.user_model
              .find_by_normalized_email(params[:password][:email])
+    # rubocop:enable Rails/DynamicFindBy
   end
 
   def find_user_for_edit

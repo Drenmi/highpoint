@@ -7,6 +7,11 @@ AllCops:
     - tmp/**/*
     - vendor/**/*
     - .gems/**/*
+    - app/**/*
+
+Metrics:
+  Exclude:
+    - app/controllers/clearance/**/*
 
 Rails:
   Enabled: true
