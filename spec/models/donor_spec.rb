@@ -27,4 +27,14 @@ RSpec.describe Donor, type: :model do
     it { expect(described_class.search("smith")).to contain_exactly(@match_beginning, @match_middle, @match_end) }
     it { expect(described_class.search("b777")).to contain_exactly(@match_identification) }
   end
+
+  describe ".same_postcode" do
+    before do
+      @donor1 = create(:donor)
+      @donor2 = create(:donor)
+      @donor3 = create(:donor, postal_code: "333444")
+    end
+
+    it { expect(described_class.same_postcode("111222")).to match_array [@donor1, @donor2] }
+  end
 end

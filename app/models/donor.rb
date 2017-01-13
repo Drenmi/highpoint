@@ -13,6 +13,8 @@ class Donor < ActiveRecord::Base
 
   scope :search, ->(keyword) { where("name ILIKE :keyword OR identification ILIKE :keyword", keyword: "%#{keyword}%") }
 
+  scope :same_postcode, ->(postcode) { where(postal_code: postcode) }
+
   def total_donations(cause_id = nil)
     if cause_id.present?
       donations.where(cause_id: cause_id).sum(:amount).round
