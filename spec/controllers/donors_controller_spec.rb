@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe DonorsController, type: :controller do
-  let(:donor) { instance_double(Donor) }
+  let(:donor) { FactoryGirl.build_stubbed(:donor) }
 
   before do
     sign_in

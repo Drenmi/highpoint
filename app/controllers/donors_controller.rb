@@ -3,6 +3,7 @@ class DonorsController < ApplicationController
   def show
     @donor = find_donor(params[:id])
     @new_donation = params[:new_donation] || "false"
+    @donations = @donor.donations.page(params[:page]).order("created_at DESC")
   end
 
   # GET /donors

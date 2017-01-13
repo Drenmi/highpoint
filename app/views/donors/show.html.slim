@@ -31,7 +31,7 @@
             th Event
             th
         tbody
-          - @donor.donations.each do |donation|
+          - @donations.each do |donation|
            tr
               td = l donation.created_at.to_date, format: donation.created_at.year == Date.today.year ? :short : :default
               td $#{donation.amount.to_i}
@@ -42,5 +42,9 @@
               td
                 = link_to edit_donation_path(donation), remote: true do
                   i.fa.fa-pencil.fa-lg
+
+.text-xs-center
+  .row
+    = will_paginate @donations
 
 .modal.fade#editDonation role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"

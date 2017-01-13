@@ -19,6 +19,7 @@ class EventsController < ApplicationController
   def index
     @events = EventsFinder.new(params).find_all.paginate(page: params[:page], per_page: 15)
     @search = params[:search] || nil
+
     respond_to do |format|
       format.html
       format.js
