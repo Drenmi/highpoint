@@ -11,6 +11,3 @@
 /log/*
 /tmp
 sendgrid.env
-
-# Ignore local test coverage filed
-/coverage
