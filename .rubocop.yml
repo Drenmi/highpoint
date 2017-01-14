@@ -13,9 +13,6 @@ Metrics:
   Exclude:
     - app/controllers/clearance/**/*
 
-Bundler/OrderedGems:
-  Enabled: false
-
 Rails:
   Enabled: true
 
