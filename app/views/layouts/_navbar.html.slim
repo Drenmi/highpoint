@@ -3,10 +3,10 @@
   .collapse.navbar-toggleable-xs#navbarResponsive
     = link_to "HCSA Admin", donations_path, class: "navbar-brand"
     ul.nav.navbar-nav
-      li.nav-item = link_to "Donors", donors_path, class: "nav-link"
-      li.nav-item = link_to "Events", events_path, class: "nav-link"
-      li.nav-item = link_to "Reports", reports_path, class: "nav-link"
-      li.nav-item = link_to "Users", users_path, class: "nav-link" if current_user.admin?
+      li.nav-item class=active_class(donors_path) = link_to "Donors", donors_path, class: "nav-link"
+      li.nav-item class=active_class(events_path) = link_to "Events", events_path, class: "nav-link"
+      li.nav-item class=active_class(reports_path) = link_to "Reports", reports_path, class: "nav-link"
+      li.nav-item class=active_class(users_path) = link_to "Users", users_path, class: "nav-link" if current_user.admin?
       .float-sm-right
         li.nav-item
           button.btn.btn-primary type="button" data-toggle="modal" data-target="#donationModal"

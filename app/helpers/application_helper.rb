@@ -29,4 +29,8 @@ module ApplicationHelper
       "Created on #{l object.created_at.localtime}"
     end
   end
+
+  def active_class(link_path)
+    current_page?(link_path) ? "active" : ""
+  end
 end
