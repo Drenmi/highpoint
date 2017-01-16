@@ -15,3 +15,6 @@
               = label_tag :anonymous, "Anonymous", class: "form-check-label"
 
             = render "donations/form", f: f
+            .actions
+              = f.submit "Create Donation", class: "btn btn-primary form-control"
+

@@ -11,3 +11,6 @@
           = f.label :created_at, "Donated On", class: "control-label"
           = f.text_field :created_at, class: "form-control datepicker", value: l(@donation.created_at.to_date)
         = render "form", f: f
+        .actions
+          = f.submit "Save Changes", class: "btn btn-primary form-control"
+
