@@ -3,9 +3,12 @@
 .row
   #edit_partial
 
-- if @new_donation == "true"
+- if @new_donation == "true" && !@donor.anonymous?
   .row
     = render "edit"
+- elsif @donor.anonymous?
+  .row
+    = render "anonymous"
 - else
   .row
     #show_partial
