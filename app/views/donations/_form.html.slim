@@ -11,6 +11,3 @@
 .form-group
   label.form-control-label for="causeOrEvent" Event:
   = f.select :event_id, Event.pluck(:name, :id), { include_blank: true }, class:"form-control"
-
-.actions
-  = f.submit "Save changes", class: "btn btn-primary form-control"
