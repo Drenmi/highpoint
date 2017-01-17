@@ -36,11 +36,15 @@ class Donor < ActiveRecord::Base
     self.name = "" if name.blank?
   end
 
+  def anonymous?
+    self.name == "Anonymous"
+  end
+
   def shares_postal_code_with_others?
-    true if self.postal_code&.present? && Donor.same_postcode(self.postal_code).count > 1
+    self.postal_code&.present? && Donor.same_postcode(self.postal_code).count > 1
   end
 
   def donors_own_postal_code(donor)
-    true if donor.name == self.name
+    donor.name == self.name
   end
 end
