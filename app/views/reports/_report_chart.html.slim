@@ -9,7 +9,7 @@ col-xs-12.col-md-10.offset-md-1.text-xs-center
     p <b>Event:</b> #{report.event&.name || "All"}
 
   .col-xs-12.text-xs-center
-      h5 Total Donations: $#{report.donations.sum(:amount).round}
+      h5 Total Donations: #{number_to_currency(report.donations.sum(:amount), precision: 0)}
   - if !report.cause_id.empty? || !report.event_id.empty?
     = area_chart report.donations.group_by_week("donations.created_at").sum(:amount)
   - else

@@ -13,7 +13,7 @@
         - report.donations.each do |donation|
           tr
             td = donation.donor&.name
-            td = link_to donation.donor.identification, donor_path(donation.donor)
+            td = link_to donation.donor&.identification || "N/A", donor_path(donation.donor)
             td = l donation.created_at.to_date
             td = donation.cause&.name
             td $#{number_with_delimiter(donation.amount.round, delimiter: ",")}
