@@ -14,3 +14,5 @@ sendgrid.env
 
 # Ignore local test coverage filed
 /coverage
+
+/db/data/*

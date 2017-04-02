@@ -9,7 +9,7 @@ class Donor < ActiveRecord::Base
 
   has_many :donations, inverse_of: :donor
 
-  validates :identification, uniqueness: true
+  validates :identification, uniqueness: true, unless: ->{ identification.blank? }
 
   scope :search, ->(keyword) { where("name ILIKE :keyword OR identification ILIKE :keyword", keyword: "%#{keyword}%") }
 

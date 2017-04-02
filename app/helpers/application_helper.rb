@@ -22,9 +22,9 @@ module ApplicationHelper
 
   def whodunnit(object)
     if object.versions.last&.event == "update"
-      "Last updated on #{l object.versions.last.created_at.localtime} by #{User.where('id = ?', object.versions.last.whodunnit).first.email}"
+      "Last updated on #{l object.versions.last.created_at.localtime} by #{User.find_by('id = ?', object.versions.last.whodunnit)&.email || "System"}"
     elsif object.versions.last&.event == "create" && !object.versions.last.whodunnit.nil?
-      "Created on #{l object.created_at.localtime} by #{User.where('id = ?', object.versions.last&.whodunnit).first.email}"
+      "Created on #{l object.created_at.localtime} by #{User.find_by('id = ?', object.versions.last&.whodunnit)&.email || "System"}"
     else
       "Created on #{l object.created_at.localtime}"
     end

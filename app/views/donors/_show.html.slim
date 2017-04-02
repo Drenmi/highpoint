@@ -11,9 +11,9 @@
           .col-xs-12.col-md-6
             h2 #{@donor&.title} #{@donor.name}
 
-            p <b>NRIC/UEN:</b> #{@donor.identification}
-            p <b>Contact no:</b> #{@donor.phone_number}
-            p <b>Email:</b> #{@donor.email_address}
+            p <b>NRIC/UEN:</b> #{@donor.identification || "N/A"}
+            p <b>Contact no:</b> #{@donor.phone_number || "N/A"}
+            p <b>Email:</b> #{@donor.email_address || "N/A"}
 
           .col-xs-6.col-md-6
             p <b>Address:</b> #{@donor.address} #{@donor.postal_code}
