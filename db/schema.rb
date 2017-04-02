@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20161128144810) do
   add_index "donations", ["event_id"], name: "index_donations_on_event_id", using: :btree
 
   create_table "donors", force: :cascade do |t|
-    t.string   "identification", null: false
+    t.string   "identification"
     t.string   "title"
     t.string   "name"
     t.text     "address"

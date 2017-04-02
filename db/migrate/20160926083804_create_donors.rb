@@ -1,7 +1,7 @@
 class CreateDonors < ActiveRecord::Migration
   def change
     create_table :donors do |t|
-      t.string :identification, null: false
+      t.string :identification
 
       t.string :title
       t.string :name
