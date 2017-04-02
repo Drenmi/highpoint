@@ -37,7 +37,7 @@
         - @donors.each do |donor|
           tr
             td = donor.name
-            td = link_to donor.identification, donor_path(donor)
+            td = link_to donor&.identification || "N/A", donor_path(donor)
             td $#{number_with_delimiter(donor.total_donations(params[:cause_id]), delimiter: ",")}
 
 .text-xs-center
