@@ -8,6 +8,8 @@ RSpec.describe Donation, type: :model do
   it { is_expected.to validate_presence_of(:amount) }
   it { is_expected.to validate_numericality_of(:amount).is_greater_than(0) }
 
+  it { is_expected.to define_enum_for(:payment_type).with([:cash, :cheque, :credit_card, :giro, :other]) }
+
   describe ".search" do
     before do
       @match_behinning = create(:donation, donor: create(:donor, name: "Smithie Black"))

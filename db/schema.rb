@@ -27,9 +27,10 @@ ActiveRecord::Schema.define(version: 20161128144810) do
     t.integer  "donor_id"
     t.integer  "cause_id"
     t.integer  "event_id"
-    t.decimal  "amount",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "payment_type", default: 0, null: false
+    t.decimal  "amount",                   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "donations", ["cause_id"], name: "index_donations_on_cause_id", using: :btree

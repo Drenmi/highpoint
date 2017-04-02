@@ -15,4 +15,6 @@ class Donation < ActiveRecord::Base
   scope :donations_for_year, ->(year) { where("EXTRACT(YEAR FROM donations.created_at) = ?", year) }
 
   scope :donations_for_month, ->(year, month) { where("EXTRACT(YEAR FROM donations.created_at) = ? AND EXTRACT(MONTH FROM donations.created_at) = ?", year, month) }
+
+  enum payment_type: [:cash, :cheque, :credit_card, :giro, :other].freeze
 end
